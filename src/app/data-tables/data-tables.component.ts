@@ -5,9 +5,9 @@ import {
   DatatableComponent,
   SelectionType
 } from '@swimlane/ngx-datatable';
-import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, BehaviorSubject } from "rxjs"
 @Component({
   selector: 'app-datatables',
   templateUrl: './data-tables.component.html',
@@ -26,7 +26,8 @@ export class DataTablesComponent implements OnInit {
     { name: 'Name', prop: 'full_name' },
     { name: 'Email', prop: 'email' },
     { name: 'Age', prop: 'age' },
-    { name: 'Salary', prop: 'salary' }
+    { name: 'Salary', prop: 'salary' },
+
   ];
 
   // multi Purpose datatable Row data
@@ -156,6 +157,11 @@ export class DataTablesComponent implements OnInit {
     this.multiPurposeTemp = DatatableData;
   }
 
+  //Fetching Data
+  getAllUsers(): Observable<any> {
+    return this.http.get("https://baltiapi.herokuapp.com/users");
+  }
+
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
 
@@ -190,5 +196,6 @@ export class DataTablesComponent implements OnInit {
         ]
       }
     };
+
   }
 }

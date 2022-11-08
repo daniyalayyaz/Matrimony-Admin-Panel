@@ -12,7 +12,7 @@
             <!-- ngx-datatable Basic -->
             <ngx-datatable [rows]="rows" [rowHeight]="50" class="bootstrap core-bootstrap" [limit]="10"
               [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [scrollbarH]="true">
-              <ngx-datatable-column name="Name" prop="full_name" [width]="150">
+              <ngx-datatable-column name="Name" prop="full_name" [width]="200">
                 <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                   <div class="d-flex align-items-center">
                     <div *ngIf="row.avatar.length > 0; else customAvatar">
@@ -33,9 +33,52 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Email" prop="email" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Age" prop="age" [width]="50"></ngx-datatable-column>
-              <ngx-datatable-column name="Salary" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Email" prop="email" [width]="200"></ngx-datatable-column>
+              <ngx-datatable-column name="Phone Number" prop="age" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Profile Created for" prop="age" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Gender" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Age" prop="salary" [width]="50"></ngx-datatable-column>
+              <ngx-datatable-column name="Martial Status" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Religious" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Sect" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Caste" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Religious Status" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Clan" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Mother Tongue" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Looks" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Complexion" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Height" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Hobbies" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Country" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Province" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="City" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="House Status" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Any Other Nationality" prop="salary" [width]="200"></ngx-datatable-column>
+              <ngx-datatable-column name="Future Plans to Live in" prop="salary" [width]="200"></ngx-datatable-column>
+              <ngx-datatable-column name="Profession" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Job Status" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Workplace" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Qualification" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Institution" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Income" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="Any Other Info" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Father Occupation" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Mother Occupation" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Sister Count" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Brother Count" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Socioeconomic Status" prop="salary" [width]="200"></ngx-datatable-column>
+              <ngx-datatable-column name="Other Family Info" prop="salary" [width]="200"></ngx-datatable-column>
+              <ngx-datatable-column name="Parent's Phone" prop="salary" [width]="150"></ngx-datatable-column>
+              <ngx-datatable-column name="Instagram Link" prop="salary" [width]="200"></ngx-datatable-column>
+              <ngx-datatable-column name="Facebook Link" prop="salary" [width]="200"></ngx-datatable-column>
+              <ngx-datatable-column name="Twitter Link" prop="salary" [width]="200"></ngx-datatable-column>
+
+
+
+
+
+
+
               <ngx-datatable-column name="Status" prop="status" [width]="100">
                 <ng-template let-status="value" ngx-datatable-cell-template>
                   <div class="badge badge-pill"
