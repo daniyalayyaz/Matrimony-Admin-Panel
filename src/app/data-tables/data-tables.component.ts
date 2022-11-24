@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { DatatableData } from './data/datatables.data';
+// import { DatatableData } from './data/datatables.data';
 import {
   ColumnMode,
   DatatableComponent,
@@ -15,23 +15,36 @@ import { Observable, BehaviorSubject } from "rxjs"
   encapsulation: ViewEncapsulation.None
 })
 export class DataTablesComponent implements OnInit {
+
+  users:any;
   // public
   public contentHeader: object;
-
+  DatatableData:any={}
   // row data
-  public rows = DatatableData;
+  public rows = this.DatatableData;
 
   // column header
   public columns = [
-    { name: 'Name', prop: 'full_name' },
-    { name: 'Email', prop: 'email' },
+    { name: 'email', prop: 'email' },
+    
+
     { name: 'Age', prop: 'age' },
     { name: 'Salary', prop: 'salary' },
 
   ];
 
+  // For basic table
+
+  columnsForBasic = ['Name','Email','Gender','Age','Personal Contact','Parent Contact','Facebook','Instagram',
+'Twitter','Profile Created','Religious','Other Religion','Sect','Caste','Religious Status','Clan','Mother Tongue','Looks',
+'Complexion','Height','Build','Hobbies','Country','Province','City','House','Nationality','Future Plans','Professional',
+'Job Status','Workplace','Specialties','Qualification','Another Qualification','Institution','Income','Professional Info',
+'Father Occuption','Mother Occuption','Sisters','Brothers','Social Economic','Family Info',"Verification",
+"Action"
+]
+
   // multi Purpose datatable Row data
-  public multiPurposeRows = DatatableData;
+  public multiPurposeRows = this.DatatableData;
 
   public ColumnMode = ColumnMode;
 
@@ -121,7 +134,7 @@ export class DataTablesComponent implements OnInit {
    */
   serverSideSetPage(event) {
     this.http
-      .get('assets/data/datatable-data.json')
+      .get('http://localhost:5000/api/admin/getallusers')
       .pipe(map((data) => data as Array<any>))
       .subscribe((data) => {
         this.serverSideRowData = data;
@@ -146,22 +159,39 @@ export class DataTablesComponent implements OnInit {
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
   }
+  getAllUsers(){
+    this.http.get("http://localhost:5000/api/admin/getallusers").subscribe((result)=>{
+  
+      this.users=result
+    });
+      // let user = this.http.get("http://localhost:5000/api/admin/getallusers");
+      // return this.http.get("https://baltiapi.herokuapp.com/users");
+    }
 
+    deleteUser(id:any){
+      this.http.get(`http://localhost:5000/api/admin/deleteuser/${id}`).subscribe((result)=>{
+  
+        console.log(result)
+      });
+      this.getAllUsers();
+    }
+
+  
   /**
    * Constructor
    *
    * @param {HttpClient} http
    */
   constructor(private http: HttpClient) {
-    this.tempData = DatatableData;
-    this.multiPurposeTemp = DatatableData;
+    this.tempData = this.DatatableData;
+    this.multiPurposeTemp = this.DatatableData;
+    this.getAllUsers();
+
+    
   }
 
   //Fetching Data
-  getAllUsers(): Observable<any> {
-    return this.http.get("https://baltiapi.herokuapp.com/users");
-  }
-
+  
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
 

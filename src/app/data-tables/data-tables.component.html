@@ -6,97 +6,528 @@
         <div class="card-header">
           <h4 class="card-title">Basic</h4>
         </div>
+
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatable Basic -->
-            <ngx-datatable [rows]="rows" [rowHeight]="50" class="bootstrap core-bootstrap" [limit]="10"
-              [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [scrollbarH]="true">
+            <!-- <ngx-datatable
+              [rows]="rows"
+              [rowHeight]="50"
+              class="bootstrap core-bootstrap"
+              [limit]="10"
+              [columnMode]="ColumnMode.force"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [scrollbarH]="true"
+            >
               <ngx-datatable-column name="Name" prop="full_name" [width]="200">
-                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <ng-template
+                  let-row="row"
+                  let-name="value"
+                  ngx-datatable-cell-template
+                >
                   <div class="d-flex align-items-center">
                     <div *ngIf="row.avatar.length > 0; else customAvatar">
-                      <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                        height="32" width="32" alt="datatable-avatar">
+                      <img
+                        class="rounded-circle mr-1"
+                        src="assets/img/portrait/small/{{ row.avatar }}"
+                        height="32"
+                        width="32"
+                        alt="datatable-avatar"
+                      />
                     </div>
                     <ng-template #customAvatar>
-                      <div class="avatar mr-1 ml-0"
-                        [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
+                      <div
+                        class="avatar mr-1 ml-0"
+                        [ngClass]="{
+                          'bg-primary': row.status == '1',
+                          'bg-success': row.status == '2',
+                          'bg-danger': row.status == '3',
+                          'bg-warning': row.status == '4',
+                          'bg-info': row.status == '5'
+                        }"
+                      >
                         <div class="avatar-content">{{ name | shortName }}</div>
                       </div>
                     </ng-template>
                     <div class="cell-line-height">
                       <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
                       <span class="text-muted font-small-2">
-                        {{ row.post }}</span>
+                        {{ row.post }}</span
+                      >
                     </div>
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Email" prop="email" [width]="200"></ngx-datatable-column>
-              <ngx-datatable-column name="Phone Number" prop="age" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Profile Created for" prop="age" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Gender" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Age" prop="salary" [width]="50"></ngx-datatable-column>
-              <ngx-datatable-column name="Martial Status" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Religious" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Sect" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Caste" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Religious Status" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Clan" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Mother Tongue" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Looks" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Complexion" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Height" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Hobbies" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Country" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Province" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="City" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="House Status" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Any Other Nationality" prop="salary" [width]="200"></ngx-datatable-column>
-              <ngx-datatable-column name="Future Plans to Live in" prop="salary" [width]="200"></ngx-datatable-column>
-              <ngx-datatable-column name="Profession" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Job Status" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Workplace" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Qualification" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Institution" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Income" prop="salary" [width]="100"></ngx-datatable-column>
-              <ngx-datatable-column name="Any Other Info" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Father Occupation" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Mother Occupation" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Sister Count" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Brother Count" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Socioeconomic Status" prop="salary" [width]="200"></ngx-datatable-column>
-              <ngx-datatable-column name="Other Family Info" prop="salary" [width]="200"></ngx-datatable-column>
-              <ngx-datatable-column name="Parent's Phone" prop="salary" [width]="150"></ngx-datatable-column>
-              <ngx-datatable-column name="Instagram Link" prop="salary" [width]="200"></ngx-datatable-column>
-              <ngx-datatable-column name="Facebook Link" prop="salary" [width]="200"></ngx-datatable-column>
-              <ngx-datatable-column name="Twitter Link" prop="salary" [width]="200"></ngx-datatable-column>
-
-
-
-
-
-
+              <ngx-datatable-column
+                name="Email"
+                prop="email"
+                [width]="200"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Phone Number"
+                prop="age"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Profile Created for"
+                prop="age"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Gender"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Age"
+                prop="salary"
+                [width]="50"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Martial Status"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Religious"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Sect"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Caste"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Religious Status"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Clan"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Mother Tongue"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Looks"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Complexion"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Height"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Hobbies"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Country"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Province"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="City"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="House Status"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Any Other Nationality"
+                prop="salary"
+                [width]="200"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Future Plans to Live in"
+                prop="salary"
+                [width]="200"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Profession"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Job Status"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Workplace"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Qualification"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Institution"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Income"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Any Other Info"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Father Occupation"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Mother Occupation"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Sister Count"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Brother Count"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Socioeconomic Status"
+                prop="salary"
+                [width]="200"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Other Family Info"
+                prop="salary"
+                [width]="200"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Parent's Phone"
+                prop="salary"
+                [width]="150"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Instagram Link"
+                prop="salary"
+                [width]="200"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Facebook Link"
+                prop="salary"
+                [width]="200"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Twitter Link"
+                prop="salary"
+                [width]="200"
+              ></ngx-datatable-column>
 
               <ngx-datatable-column name="Status" prop="status" [width]="100">
                 <ng-template let-status="value" ngx-datatable-cell-template>
-                  <div class="badge badge-pill"
-                    [ngClass]="{'bg-light-primary': status == '1', 'bg-light-success':status == '2', 'bg-light-danger':status == '3' , 'bg-light-warning':status == '4' , 'bg-light-info':status == '5'}">
-                    {{ status == 1 ? "Current" : (status == 2 ? "Professional" : (status == 3 ? "Rejected" : (status == 4 ? "Resigned" : status == 5 ? "Applied" : "Applied"))) }}
+                  <div
+                    class="badge badge-pill"
+                    [ngClass]="{
+                      'bg-light-primary': status == '1',
+                      'bg-light-success': status == '2',
+                      'bg-light-danger': status == '3',
+                      'bg-light-warning': status == '4',
+                      'bg-light-info': status == '5'
+                    }"
+                  >
+                    {{
+                      status == 1
+                        ? "Current"
+                        : status == 2
+                        ? "Professional"
+                        : status == 3
+                        ? "Rejected"
+                        : status == 4
+                        ? "Resigned"
+                        : status == 5
+                        ? "Applied"
+                        : "Applied"
+                    }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" [width]="70">
                 <ng-template ngx-datatable-cell-template>
-                  <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                  <i
+                    class="ft-more-vertical text-primary cursor-pointer mr-2"
+                  ></i>
                   <i class="ft-edit text-primary cursor-pointer"></i>
                 </ng-template>
               </ngx-datatable-column>
-
-            </ngx-datatable>
+            </ngx-datatable> -->
             <!--/ ngx-datatable Basic -->
 
+            <!-- Custom table -->
+            <table class="table table-responsive align-middle mb-0 bg-white">
+              <thead class="bg-light">
+                <tr>
+                  <th *ngFor="let column of columnsForBasic">{{ column }}</th>
+                  <!-- <th>Title</th>
+                  <th>Status</th>
+                  <th>Position</th>
+                  <th>Actions</th>
+                  <th>Actions</th>
+                  <th>Actions</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">{{ user.name }}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">{{ user.email }}</p>
+                  </td>
+                  <!-- <td>
+                    <span class="badge badge-success rounded-pill d-inline"
+                      >{{user.active}}</span
+                    >
+                  </td> -->
+                  <td>
+                    {{ user.gender }}
+                  </td>
+                  <td>{{ user.age }}</td>
+                  <td>{{ user.personalContact }}</td>
+                  <td>{{ user.parentContact }}</td>
+                  <td>{{ user.socialLinkFb }}</td>
+                  <td>{{ user.socialLinkInsta }}</td>
+                  <td>{{ user.socialLinkTwitter }}</td>
+                  <td>{{ user.profileCreated }}</td>
+                  <td>{{ user.religious }}</td>
+                  <td *ngIf="user.otherreligion === null">N/A</td>
+                  <td *ngIf="user.otherreligion != null">
+                    {{ user.otherreligion }}
+                  </td>
+
+                  <td *ngIf="user.sect === null">N/A</td>
+                  <td *ngIf="user.sect != null">
+                    {{ user.sect }}
+                  </td>
+                  <td>{{ user.caste }}</td>
+                  <td>{{ user.religiousStatus }}</td>
+                  <td>{{ user.clan }}</td>
+                  <td>{{ user.montherTonque }}</td>
+                  <td>{{ user.looks }}</td>
+                  <td>{{ user.complexion }}</td>
+                  <td>{{ user.height }}</td>
+                  <td>{{ user.build }}</td>
+                  <td>{{ user.hobbies }}</td>
+                  <td>{{ user.country }}</td>
+                  <td *ngIf="user.province === null">N/A</td>
+                  <td *ngIf="user.province != null">
+                    {{ user.province }}
+                  </td>
+                  <td *ngIf="user.city === null">N/A</td>
+                  <td *ngIf="user.city != null">
+                    {{ user.city }}
+                  </td>
+                  <td>{{ user.house }}</td>
+                  <td>{{ user.nationality }}</td>
+                  <td>{{ user.futurePlans }}</td>
+                  <td>{{ user.professional }}</td>
+                  <td>{{ user.jobStatus }}</td>
+                  <td>{{ user.workplace }}</td>
+                  <td *ngIf="user.specialties === null">N/A</td>
+                  <td *ngIf="user.specialties != null">
+                    {{ user.specialties }}
+                  </td>
+                  <td *ngIf="user.qualification === null">N/A</td>
+                  <td *ngIf="user.qualification != null">
+                    {{ user.qualification }}
+                  </td>
+                  <td>{{ user.anotherqualification }}</td>
+                  <td>{{ user.institution }}</td>
+                  <td>{{ user.income }}</td>
+                  <td>{{ user.professionalInfo }}</td>
+                  <td>{{ user.fatherOccuption }}</td>
+                  <td>{{ user.motherOccuption }}</td>
+                  <td>{{ user.siblingsCountSisters }}</td>
+                  <td>{{ user.siblingsCountBrothers }}</td>
+                  <td>{{ user.socialEconomic }}</td>
+                  <td>{{ user.familyInfo }}</td>
+                  <td *ngIf="user.active === true">
+                    <span class="badge badge-success rounded-pill d-inline"
+                      >Active</span
+                    >
+                  </td>
+                  <td *ngIf="user.active === false">
+                    <span class="badge badge-danger rounded-pill d-inline"
+                      >Not Active</span
+                    >
+                  </td>
+                  <!-- <td>
+                    <span class="badge badge-success rounded-pill d-inline">{{
+                      user.phoneactive
+                    }}</span>
+                  </td> -->
+                  <!-- <td>
+                    <button
+                      type="button"
+                      class="btn btn-link btn-sm btn-rounded"
+                    >
+                      Edit
+                    </button>
+                  </td> -->
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-link btn-sm btn-rounded"
+                      (click)="deleteUser(user._id)"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <!-- <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                        alt=""
+                        style="width: 45px; height: 45px"
+                        class="rounded-circle"
+                      />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">John Doe</p>
+                        <p class="text-muted mb-0">john.doe@gmail.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">Software engineer</p>
+                    <p class="text-muted mb-0">IT department</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-success rounded-pill d-inline"
+                      >Active</span
+                    >
+                  </td>
+                  <td>Senior</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-link btn-sm btn-rounded"
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+                        class="rounded-circle"
+                        alt=""
+                        style="width: 45px; height: 45px"
+                      />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">Alex Ray</p>
+                        <p class="text-muted mb-0">alex.ray@gmail.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">Consultant</p>
+                    <p class="text-muted mb-0">Finance</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-primary rounded-pill d-inline"
+                      >Onboarding</span
+                    >
+                  </td>
+                  <td>Junior</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-link btn-rounded btn-sm fw-bold"
+                      mdbRipple
+                      rippleColor="dark"
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+                        class="rounded-circle"
+                        alt=""
+                        style="width: 45px; height: 45px"
+                      />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">Kate Hunington</p>
+                        <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">Designer</p>
+                    <p class="text-muted mb-0">UI/UX</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-warning rounded-pill d-inline"
+                      >Awaiting</span
+                    >
+                  </td>
+                  <td>Senior</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-link btn-rounded btn-sm fw-bold"
+                      mdbRipple
+                      rippleColor="dark"
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+            <!-- Custom table -->
           </div>
         </div>
       </div>
@@ -115,49 +546,119 @@
         </div>
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatable-inline-editing -->
-            <ngx-datatable class="bootstrap core-bootstrap" [headerHeight]="50" [limit]="10"
-              [columnMode]="ColumnMode.force" [footerHeight]="50" rowHeight="auto" [rows]="rows" [scrollbarH]="true">
+            <ngx-datatable
+              class="bootstrap core-bootstrap"
+              [headerHeight]="50"
+              [limit]="10"
+              [columnMode]="ColumnMode.force"
+              [footerHeight]="50"
+              rowHeight="auto"
+              [rows]="rows"
+              [scrollbarH]="true"
+            >
               <ngx-datatable-column [width]="200" name="Name" prop="full_name">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  <div title="Double click to edit" (dblclick)="editing[rowIndex + '-full_name'] = true"
-                    *ngIf="!editing[rowIndex + '-full_name']">
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  <div
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-full_name'] = true"
+                    *ngIf="!editing[rowIndex + '-full_name']"
+                  >
                     <div class="d-flex align-items-center">
                       <div *ngIf="row.avatar.length > 0; else customAvatar">
-                        <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                          height="32" width="32" alt="datatable-avatar">
+                        <img
+                          class="rounded-circle mr-1"
+                          src="assets/img/portrait/small/{{ row.avatar }}"
+                          height="32"
+                          width="32"
+                          alt="datatable-avatar"
+                        />
                       </div>
                       <ng-template #customAvatar>
-                        <div class="avatar mr-1 ml-0"
-                          [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
-                          <div class="avatar-content">{{ value | shortName }}</div>
+                        <div
+                          class="avatar mr-1 ml-0"
+                          [ngClass]="{
+                            'bg-primary': row.status == '1',
+                            'bg-success': row.status == '2',
+                            'bg-danger': row.status == '3',
+                            'bg-warning': row.status == '4',
+                            'bg-info': row.status == '5'
+                          }"
+                        >
+                          <div class="avatar-content">
+                            {{ value | shortName }}
+                          </div>
                         </div>
                       </ng-template>
                       <div class="cell-line-height">
-                        <p class="font-medium-1 line-height-1 mb-0">{{ value }}</p>
+                        <p class="font-medium-1 line-height-1 mb-0">
+                          {{ value }}
+                        </p>
                         <span class="text-muted font-small-2">
-                          {{ row.post }}</span>
+                          {{ row.post }}</span
+                        >
                       </div>
                     </div>
                   </div>
-                  <input autofocus class="form-control form-control-sm"
-                    (blur)="inlineEditingUpdate($event, 'full_name', rowIndex)" *ngIf="editing[rowIndex + '-full_name']"
-                    type="text" [value]="value" />
+                  <input
+                    autofocus
+                    class="form-control form-control-sm"
+                    (blur)="inlineEditingUpdate($event, 'full_name', rowIndex)"
+                    *ngIf="editing[rowIndex + '-full_name']"
+                    type="text"
+                    [value]="value"
+                  />
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column [width]="100" name="Status" prop="status">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
-                  <div title="Double click to edit" (dblclick)="editing[rowIndex + '-status'] = true"
-                    *ngIf="!editing[rowIndex + '-status']">
-                    <div class="badge badge-pill"
-                      [ngClass]="{'bg-light-primary': value == '1', 'bg-light-success':value == '2', 'bg-light-danger':value == '3' , 'bg-light-warning':value == '4' , 'bg-light-info':value == '5'}">
-                      {{ value == 1 ? "Current" : (value == 2 ? "Professional" : (value == 3 ? "Rejected" : (value == 4 ? "Resigned" : value == 5 ? "Applied" : "Applied"))) }}
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-row="row"
+                  let-value="value"
+                >
+                  <div
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-status'] = true"
+                    *ngIf="!editing[rowIndex + '-status']"
+                  >
+                    <div
+                      class="badge badge-pill"
+                      [ngClass]="{
+                        'bg-light-primary': value == '1',
+                        'bg-light-success': value == '2',
+                        'bg-light-danger': value == '3',
+                        'bg-light-warning': value == '4',
+                        'bg-light-info': value == '5'
+                      }"
+                    >
+                      {{
+                        value == 1
+                          ? "Current"
+                          : value == 2
+                          ? "Professional"
+                          : value == 3
+                          ? "Rejected"
+                          : value == 4
+                          ? "Resigned"
+                          : value == 5
+                          ? "Applied"
+                          : "Applied"
+                      }}
                     </div>
                   </div>
-                  <select *ngIf="editing[rowIndex + '-status']" (blur)="editing[rowIndex + '-status'] = false"
-                    (change)="inlineEditingUpdate($event, 'status', rowIndex)" [value]="value"
-                    class="form-control form-control-sm">
+                  <select
+                    *ngIf="editing[rowIndex + '-status']"
+                    (blur)="editing[rowIndex + '-status'] = false"
+                    (change)="inlineEditingUpdate($event, 'status', rowIndex)"
+                    [value]="value"
+                    class="form-control form-control-sm"
+                  >
                     <option value="1">Current</option>
                     <option value="2">Professional</option>
                     <option value="3">Rejected</option>
@@ -171,16 +672,22 @@
                   {{ value }}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column [width]="100" name="Salary" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column
+                [width]="100"
+                name="Salary"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
               <ngx-datatable-column name="Actions" [width]="70">
                 <ng-template ngx-datatable-cell-template>
-                  <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                  <i
+                    class="ft-more-vertical text-primary cursor-pointer mr-2"
+                  ></i>
                   <i class="ft-edit text-primary cursor-pointer"></i>
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
             <!--/ ngx-datatable-inline-editing -->
-
           </div>
         </div>
       </div>
@@ -199,57 +706,122 @@
         </div>
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatable-filter -->
             <fieldset class="form-group">
-              <label for="ngx-filter-ref">Search:
-                <input id="ngx-filter-ref" class="form-control form-control-sm d-inline-block width-200" type="text"
-                  placeholder="Filter the Name column..." (keyup)="filterUpdate($event)" />
+              <label for="ngx-filter-ref"
+                >Search:
+                <input
+                  id="ngx-filter-ref"
+                  class="form-control form-control-sm d-inline-block width-200"
+                  type="text"
+                  placeholder="Filter the Name column..."
+                  (keyup)="filterUpdate($event)"
+                />
               </label>
             </fieldset>
-            <ngx-datatable class="bootstrap core-bootstrap" [columns]="columns" [columnMode]="ColumnMode.force"
-              [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows" [scrollbarH]="true">
+            <ngx-datatable
+              class="bootstrap core-bootstrap"
+              [columns]="columns"
+              [columnMode]="ColumnMode.force"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              rowHeight="auto"
+              [limit]="10"
+              [rows]="rows"
+              [scrollbarH]="true"
+            >
               <ngx-datatable-column name="Name" prop="full_name" [width]="200">
-                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <ng-template
+                  let-row="row"
+                  let-name="value"
+                  ngx-datatable-cell-template
+                >
                   <div class="d-flex align-items-center">
                     <div *ngIf="row.avatar.length > 0; else customAvatar">
-                      <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                        height="32" width="32" alt="datatable-avatar">
+                      <img
+                        class="rounded-circle mr-1"
+                        src="assets/img/portrait/small/{{ row.avatar }}"
+                        height="32"
+                        width="32"
+                        alt="datatable-avatar"
+                      />
                     </div>
                     <ng-template #customAvatar>
-                      <div class="avatar mr-1 ml-0"
-                        [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
+                      <div
+                        class="avatar mr-1 ml-0"
+                        [ngClass]="{
+                          'bg-primary': row.status == '1',
+                          'bg-success': row.status == '2',
+                          'bg-danger': row.status == '3',
+                          'bg-warning': row.status == '4',
+                          'bg-info': row.status == '5'
+                        }"
+                      >
                         <div class="avatar-content">{{ name | shortName }}</div>
                       </div>
                     </ng-template>
                     <div class="cell-line-height">
                       <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
                       <span class="text-muted font-small-2">
-                        {{ row.post }}</span>
+                        {{ row.post }}</span
+                      >
                     </div>
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Email" prop="email" [width]="250"></ngx-datatable-column>
-              <ngx-datatable-column name="Age" prop="age" [width]="50"></ngx-datatable-column>
-              <ngx-datatable-column name="Salary" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Email"
+                prop="email"
+                [width]="250"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Age"
+                prop="age"
+                [width]="50"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Salary"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
               <ngx-datatable-column name="Status" prop="status" [width]="100">
                 <ng-template let-status="value" ngx-datatable-cell-template>
-                  <div class="badge badge-pill"
-                    [ngClass]="{'bg-light-primary': status == '1', 'bg-light-success':status == '2', 'bg-light-danger':status == '3' , 'bg-light-warning':status == '4' , 'bg-light-info':status == '5'}">
-                    {{ status == 1 ? "Current" : (status == 2 ? "Professional" : (status == 3 ? "Rejected" : (status == 4 ? "Resigned" : status == 5 ? "Applied" : "Applied"))) }}
+                  <div
+                    class="badge badge-pill"
+                    [ngClass]="{
+                      'bg-light-primary': status == '1',
+                      'bg-light-success': status == '2',
+                      'bg-light-danger': status == '3',
+                      'bg-light-warning': status == '4',
+                      'bg-light-info': status == '5'
+                    }"
+                  >
+                    {{
+                      status == 1
+                        ? "Current"
+                        : status == 2
+                        ? "Professional"
+                        : status == 3
+                        ? "Rejected"
+                        : status == 4
+                        ? "Resigned"
+                        : status == 5
+                        ? "Applied"
+                        : "Applied"
+                    }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" [width]="70">
                 <ng-template ngx-datatable-cell-template>
-                  <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                  <i
+                    class="ft-more-vertical text-primary cursor-pointer mr-2"
+                  ></i>
                   <i class="ft-edit text-primary cursor-pointer"></i>
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
             <!-- ngx-datatable-filter -->
-
           </div>
         </div>
       </div>
@@ -268,69 +840,147 @@
         </div>
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatable-row-details -->
-            <ngx-datatable #tableRowDetails class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
-              [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="10" [rows]="rows" [scrollbarH]="true">
+            <ngx-datatable
+              #tableRowDetails
+              class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="50"
+              [limit]="10"
+              [rows]="rows"
+              [scrollbarH]="true"
+            >
               <!-- Row Detail Template -->
               <ngx-datatable-row-detail [rowHeight]="50">
-                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                <ng-template
+                  let-row="row"
+                  let-expanded="expanded"
+                  ngx-datatable-row-detail-template
+                >
                   <div class="ml-5 my-1">
                     <div><strong>City : </strong> {{ row.city }}</div>
-                    <div><strong>Experience :</strong> {{ row.experience }}</div>
+                    <div>
+                      <strong>Experience :</strong> {{ row.experience }}
+                    </div>
                   </div>
                 </ng-template>
               </ngx-datatable-row-detail>
-              <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
-                [canAutoResize]="false">
-                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
-                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
-                    (click)="rowDetailsToggleExpand(row)">
+              <ngx-datatable-column
+                [width]="50"
+                [resizeable]="false"
+                [sortable]="false"
+                [draggable]="false"
+                [canAutoResize]="false"
+              >
+                <ng-template
+                  let-row="row"
+                  let-expanded="expanded"
+                  ngx-datatable-cell-template
+                >
+                  <a
+                    href="javascript:void(0)"
+                    [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded"
+                    title="Expand/Collapse Row"
+                    (click)="rowDetailsToggleExpand(row)"
+                  >
                   </a>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Name" prop="full_name" [width]="200">
-                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <ng-template
+                  let-row="row"
+                  let-name="value"
+                  ngx-datatable-cell-template
+                >
                   <div class="d-flex align-items-center">
                     <div *ngIf="row.avatar.length > 0; else customAvatar">
-                      <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                        height="32" width="32" alt="datatable-avatar">
+                      <img
+                        class="rounded-circle mr-1"
+                        src="assets/img/portrait/small/{{ row.avatar }}"
+                        height="32"
+                        width="32"
+                        alt="datatable-avatar"
+                      />
                     </div>
                     <ng-template #customAvatar>
-                      <div class="avatar mr-1 ml-0"
-                        [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
+                      <div
+                        class="avatar mr-1 ml-0"
+                        [ngClass]="{
+                          'bg-primary': row.status == '1',
+                          'bg-success': row.status == '2',
+                          'bg-danger': row.status == '3',
+                          'bg-warning': row.status == '4',
+                          'bg-info': row.status == '5'
+                        }"
+                      >
                         <div class="avatar-content">{{ name | shortName }}</div>
                       </div>
                     </ng-template>
                     <div class="cell-line-height">
                       <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
                       <span class="text-muted font-small-2">
-                        {{ row.post }}</span>
+                        {{ row.post }}</span
+                      >
                     </div>
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Email" prop="email" [width]="250"></ngx-datatable-column>
-              <ngx-datatable-column name="Age" prop="age" [width]="50"></ngx-datatable-column>
-              <ngx-datatable-column name="Salary" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Email"
+                prop="email"
+                [width]="250"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Age"
+                prop="age"
+                [width]="50"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Salary"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
               <ngx-datatable-column name="Status" prop="status" [width]="100">
                 <ng-template let-status="value" ngx-datatable-cell-template>
-                  <div class="badge badge-pill"
-                    [ngClass]="{'bg-light-primary': status == '1', 'bg-light-success':status == '2', 'bg-light-danger':status == '3' , 'bg-light-warning':status == '4' , 'bg-light-info':status == '5'}">
-                    {{ status == 1 ? "Current" : (status == 2 ? "Professional" : (status == 3 ? "Rejected" : (status == 4 ? "Resigned" : status == 5 ? "Applied" : "Applied"))) }}
+                  <div
+                    class="badge badge-pill"
+                    [ngClass]="{
+                      'bg-light-primary': status == '1',
+                      'bg-light-success': status == '2',
+                      'bg-light-danger': status == '3',
+                      'bg-light-warning': status == '4',
+                      'bg-light-info': status == '5'
+                    }"
+                  >
+                    {{
+                      status == 1
+                        ? "Current"
+                        : status == 2
+                        ? "Professional"
+                        : status == 3
+                        ? "Rejected"
+                        : status == 4
+                        ? "Resigned"
+                        : status == 5
+                        ? "Applied"
+                        : "Applied"
+                    }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" [width]="70">
                 <ng-template ngx-datatable-cell-template>
-                  <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                  <i
+                    class="ft-more-vertical text-primary cursor-pointer mr-2"
+                  ></i>
                   <i class="ft-edit text-primary cursor-pointer"></i>
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
             <!-- ngx-datatable-row-details -->
-
           </div>
         </div>
       </div>
@@ -349,71 +999,163 @@
         </div>
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatable-custom-checkbox -->
             <div class="row">
               <div class="col-12">
-                <ngx-datatable class="bootstrap core-bootstrap header-height-50" [rows]="rows"
-                  [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
-                  [selected]="chkBoxSelected" [selectionType]="SelectionType.checkbox"
-                  (select)="customChkboxOnSelect($event)" [scrollbarH]="true">
-                  <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-                    [resizeable]="false">
-                    <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                      let-selectFn="selectFn">
+                <ngx-datatable
+                  class="bootstrap core-bootstrap header-height-50"
+                  [rows]="rows"
+                  [columnMode]="ColumnMode.force"
+                  [headerHeight]="50"
+                  [footerHeight]="50"
+                  rowHeight="auto"
+                  [limit]="10"
+                  [selected]="chkBoxSelected"
+                  [selectionType]="SelectionType.checkbox"
+                  (select)="customChkboxOnSelect($event)"
+                  [scrollbarH]="true"
+                >
+                  <ngx-datatable-column
+                    [width]="50"
+                    [sortable]="false"
+                    [canAutoResize]="false"
+                    [draggable]="false"
+                    [resizeable]="false"
+                  >
+                    <ng-template
+                      ngx-datatable-header-template
+                      let-value="value"
+                      let-allRowsSelected="allRowsSelected"
+                      let-selectFn="selectFn"
+                    >
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                        <input
+                          type="checkbox"
+                          [checked]="allRowsSelected"
+                          (change)="selectFn(!allRowsSelected)"
+                        />
                       </div>
                     </ng-template>
-                    <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-                      let-onCheckboxChangeFn="onCheckboxChangeFn">
+                    <ng-template
+                      ngx-datatable-cell-template
+                      let-value="value"
+                      let-isSelected="isSelected"
+                      let-onCheckboxChangeFn="onCheckboxChangeFn"
+                    >
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox"  [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                        <input
+                          type="checkbox"
+                          [checked]="isSelected"
+                          (change)="onCheckboxChangeFn($event)"
+                        />
                       </div>
                     </ng-template>
                   </ngx-datatable-column>
-                  <ngx-datatable-column name="Name" prop="full_name" [width]="200">
-                    <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-
+                  <ngx-datatable-column
+                    name="Name"
+                    prop="full_name"
+                    [width]="200"
+                  >
+                    <ng-template
+                      let-row="row"
+                      let-name="value"
+                      ngx-datatable-cell-template
+                    >
                       <div class="d-flex align-items-center">
                         <div *ngIf="row.avatar.length > 0; else customAvatar">
-                          <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                            height="32" width="32" alt="datatable-avatar">
+                          <img
+                            class="rounded-circle mr-1"
+                            src="assets/img/portrait/small/{{ row.avatar }}"
+                            height="32"
+                            width="32"
+                            alt="datatable-avatar"
+                          />
                         </div>
                         <ng-template #customAvatar>
-                          <div class="avatar mr-1 ml-0"
-                            [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
-                            <div class="avatar-content">{{ name | shortName }}</div>
+                          <div
+                            class="avatar mr-1 ml-0"
+                            [ngClass]="{
+                              'bg-primary': row.status == '1',
+                              'bg-success': row.status == '2',
+                              'bg-danger': row.status == '3',
+                              'bg-warning': row.status == '4',
+                              'bg-info': row.status == '5'
+                            }"
+                          >
+                            <div class="avatar-content">
+                              {{ name | shortName }}
+                            </div>
                           </div>
                         </ng-template>
                         <div class="cell-line-height">
-                          <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
+                          <p class="font-medium-1 line-height-1 mb-0">
+                            {{ name }}
+                          </p>
                           <span class="text-muted font-small-2">
-                            {{ row.post }}</span>
+                            {{ row.post }}</span
+                          >
                         </div>
                       </div>
                     </ng-template>
                   </ngx-datatable-column>
-                  <ngx-datatable-column name="Email" prop="email" [width]="250"></ngx-datatable-column>
-                  <ngx-datatable-column name="Age" prop="age" [width]="50"></ngx-datatable-column>
-                  <ngx-datatable-column name="Salary" prop="salary" [width]="100"></ngx-datatable-column>
-                  <ngx-datatable-column name="Status" prop="status" [width]="100">
+                  <ngx-datatable-column
+                    name="Email"
+                    prop="email"
+                    [width]="250"
+                  ></ngx-datatable-column>
+                  <ngx-datatable-column
+                    name="Age"
+                    prop="age"
+                    [width]="50"
+                  ></ngx-datatable-column>
+                  <ngx-datatable-column
+                    name="Salary"
+                    prop="salary"
+                    [width]="100"
+                  ></ngx-datatable-column>
+                  <ngx-datatable-column
+                    name="Status"
+                    prop="status"
+                    [width]="100"
+                  >
                     <ng-template let-status="value" ngx-datatable-cell-template>
-                      <div class="badge badge-pill"
-                        [ngClass]="{'bg-light-primary': status == '1', 'bg-light-success':status == '2', 'bg-light-danger':status == '3' , 'bg-light-warning':status == '4' , 'bg-light-info':status == '5'}">
-                        {{ status == 1 ? "Current" : (status == 2 ? "Professional" : (status == 3 ? "Rejected" : (status == 4 ? "Resigned" : status == 5 ? "Applied" : "Applied"))) }}
+                      <div
+                        class="badge badge-pill"
+                        [ngClass]="{
+                          'bg-light-primary': status == '1',
+                          'bg-light-success': status == '2',
+                          'bg-light-danger': status == '3',
+                          'bg-light-warning': status == '4',
+                          'bg-light-info': status == '5'
+                        }"
+                      >
+                        {{
+                          status == 1
+                            ? "Current"
+                            : status == 2
+                            ? "Professional"
+                            : status == 3
+                            ? "Rejected"
+                            : status == 4
+                            ? "Resigned"
+                            : status == 5
+                            ? "Applied"
+                            : "Applied"
+                        }}
                       </div>
                     </ng-template>
                   </ngx-datatable-column>
                   <ngx-datatable-column name="Actions" [width]="70">
                     <ng-template ngx-datatable-cell-template>
-                      <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                      <i
+                        class="ft-more-vertical text-primary cursor-pointer mr-2"
+                      ></i>
                       <i class="ft-edit text-primary cursor-pointer"></i>
                     </ng-template>
                   </ngx-datatable-column>
                 </ngx-datatable>
               </div>
-              <hr class="w-100">
+              <hr class="w-100" />
               <div class="selected-column col-12 mt-1">
                 <h4>
                   Selections <small>({{ chkBoxSelected?.length }})</small>
@@ -427,7 +1169,6 @@
               </div>
             </div>
             <!--/ ngx-datatable-custom-checkbox -->
-
           </div>
         </div>
       </div>
@@ -446,52 +1187,111 @@
         </div>
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatables-server-side -->
-            <ngx-datatable class="bootstrap core-bootstrap" [rows]="serverSideRowData" [columns]="columns"
-              [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
-              [scrollbarH]="true" (page)="serverSideSetPage($event)">
-              <ngx-datatable-column name="Name" prop="full_name" [width]="200">
-                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            <ngx-datatable
+              class="bootstrap core-bootstrap"
+              [rows]="serverSideRowData"
+              [columns]="columns"
+              [columnMode]="ColumnMode.force"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              rowHeight="auto"
+              [limit]="10"
+              [scrollbarH]="true"
+              (page)="serverSideSetPage($event)"
+            >
+              <ngx-datatable-column name="email" prop="email" [width]="200">
+                <ng-template
+                  let-row="row"
+                  let-name="value"
+                  ngx-datatable-cell-template
+                >
                   <div class="d-flex align-items-center">
                     <div *ngIf="row.avatar.length > 0; else customAvatar">
-                      <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                        height="32" width="32" alt="datatable-avatar">
+                      <img
+                        class="rounded-circle mr-1"
+                        src="assets/img/portrait/small/{{ row.avatar }}"
+                        height="32"
+                        width="32"
+                        alt="datatable-avatar"
+                      />
                     </div>
                     <ng-template #customAvatar>
-                      <div class="avatar mr-1 ml-0"
-                        [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
+                      <div
+                        class="avatar mr-1 ml-0"
+                        [ngClass]="{
+                          'bg-primary': row.status == '1',
+                          'bg-success': row.status == '2',
+                          'bg-danger': row.status == '3',
+                          'bg-warning': row.status == '4',
+                          'bg-info': row.status == '5'
+                        }"
+                      >
                         <div class="avatar-content">{{ name | shortName }}</div>
                       </div>
                     </ng-template>
                     <div class="cell-line-height">
                       <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
                       <span class="text-muted font-small-2">
-                        {{ row.post }}</span>
+                        {{ row.post }}</span
+                      >
                     </div>
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Email" prop="email" [width]="250"></ngx-datatable-column>
-              <ngx-datatable-column name="Age" prop="age" [width]="50"></ngx-datatable-column>
-              <ngx-datatable-column name="Salary" prop="salary" [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column
+                name="email"
+                prop="email"
+                [width]="250"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Age"
+                prop="age"
+                [width]="50"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Salary"
+                prop="salary"
+                [width]="100"
+              ></ngx-datatable-column>
               <ngx-datatable-column name="Status" prop="status" [width]="100">
                 <ng-template let-status="value" ngx-datatable-cell-template>
-                  <div class="badge badge-pill"
-                    [ngClass]="{'bg-light-primary': status == '1', 'bg-light-success':status == '2', 'bg-light-danger':status == '3' , 'bg-light-warning':status == '4' , 'bg-light-info':status == '5'}">
-                    {{ status == 1 ? "Current" : (status == 2 ? "Professional" : (status == 3 ? "Rejected" : (status == 4 ? "Resigned" : status == 5 ? "Applied" : "Applied"))) }}
+                  <div
+                    class="badge badge-pill"
+                    [ngClass]="{
+                      'bg-light-primary': status == '1',
+                      'bg-light-success': status == '2',
+                      'bg-light-danger': status == '3',
+                      'bg-light-warning': status == '4',
+                      'bg-light-info': status == '5'
+                    }"
+                  >
+                    {{
+                      status == 1
+                        ? "Current"
+                        : status == 2
+                        ? "Professional"
+                        : status == 3
+                        ? "Rejected"
+                        : status == 4
+                        ? "Resigned"
+                        : status == 5
+                        ? "Applied"
+                        : "Applied"
+                    }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" [width]="70">
                 <ng-template ngx-datatable-cell-template>
-                  <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                  <i
+                    class="ft-more-vertical text-primary cursor-pointer mr-2"
+                  ></i>
                   <i class="ft-edit text-primary cursor-pointer"></i>
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
             <!--/ ngx-datatables-server-side -->
-
           </div>
         </div>
       </div>
@@ -510,48 +1310,97 @@
         </div>
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatables responsive -->
-            <ngx-datatable #tableResponsive class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
-              [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="10" [rows]="rows">
+            <ngx-datatable
+              #tableResponsive
+              class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="50"
+              [limit]="10"
+              [rows]="rows"
+            >
               <!-- Row Detail Template -->
               <ngx-datatable-row-detail [rowHeight]="50">
-                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                <ng-template
+                  let-row="row"
+                  let-expanded="expanded"
+                  ngx-datatable-row-detail-template
+                >
                   <div class="pl-3">
-                    <div><span><strong>Email : </strong> {{ row.email }}</span><span class="ml-1"><strong>Age :
-                        </strong>
-                        {{ row.age }}</span></div>
+                    <div>
+                      <span><strong>Email : </strong> {{ row.email }}</span
+                      ><span class="ml-1"
+                        ><strong>Age : </strong> {{ row.age }}</span
+                      >
+                    </div>
                   </div>
                 </ng-template>
               </ngx-datatable-row-detail>
               <!-- Column Templates -->
-              <ngx-datatable-column [width]="20" [resizeable]="false" [sortable]="false" [draggable]="false"
-                [canAutoResize]="false">
-                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
-                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
-                    (click)="toggleExpandRowResponsive(row)" class="desktop-hidden">
+              <ngx-datatable-column
+                [width]="20"
+                [resizeable]="false"
+                [sortable]="false"
+                [draggable]="false"
+                [canAutoResize]="false"
+              >
+                <ng-template
+                  let-row="row"
+                  let-expanded="expanded"
+                  ngx-datatable-cell-template
+                >
+                  <a
+                    href="javascript:void(0)"
+                    [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded"
+                    title="Expand/Collapse Row"
+                    (click)="toggleExpandRowResponsive(row)"
+                    class="desktop-hidden"
+                  >
                   </a>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Name" prop="full_name" [minWidth]="200">
-                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-
+              <ngx-datatable-column
+                name="Name"
+                prop="full_name"
+                [minWidth]="200"
+              >
+                <ng-template
+                  let-row="row"
+                  let-name="value"
+                  ngx-datatable-cell-template
+                >
                   <div class="d-flex align-items-center">
                     <div *ngIf="row.avatar.length > 0; else customAvatar">
-                      <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                        height="32" width="32" alt="datatable-avatar">
+                      <img
+                        class="rounded-circle mr-1"
+                        src="assets/img/portrait/small/{{ row.avatar }}"
+                        height="32"
+                        width="32"
+                        alt="datatable-avatar"
+                      />
                     </div>
                     <ng-template #customAvatar>
-                      <div class="avatar mr-1 ml-0"
-                        [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
+                      <div
+                        class="avatar mr-1 ml-0"
+                        [ngClass]="{
+                          'bg-primary': row.status == '1',
+                          'bg-success': row.status == '2',
+                          'bg-danger': row.status == '3',
+                          'bg-warning': row.status == '4',
+                          'bg-info': row.status == '5'
+                        }"
+                      >
                         <div class="avatar-content">{{ name | shortName }}</div>
                       </div>
                     </ng-template>
                     <div class="cell-line-height">
                       <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
                       <span class="text-muted font-small-2">
-                        {{ row.post }}</span>
+                        {{ row.post }}</span
+                      >
                     </div>
                   </div>
                 </ng-template>
@@ -562,24 +1411,44 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="Status" prop="status" [width]="100">
                 <ng-template let-status="value" ngx-datatable-cell-template>
-                  <div class="badge badge-pill mobile-hidden"
-                    [ngClass]="{'bg-light-primary': status == '1', 'bg-light-success':status == '2', 'bg-light-danger':status == '3' , 'bg-light-warning':status == '4' , 'bg-light-info':status == '5'}">
-                    {{ status == 1 ? "Current" : (status == 2 ? "Professional" : (status == 3 ? "Rejected" : (status == 4 ? "Resigned" : status == 5 ? "Applied" : "Applied"))) }}
+                  <div
+                    class="badge badge-pill mobile-hidden"
+                    [ngClass]="{
+                      'bg-light-primary': status == '1',
+                      'bg-light-success': status == '2',
+                      'bg-light-danger': status == '3',
+                      'bg-light-warning': status == '4',
+                      'bg-light-info': status == '5'
+                    }"
+                  >
+                    {{
+                      status == 1
+                        ? "Current"
+                        : status == 2
+                        ? "Professional"
+                        : status == 3
+                        ? "Rejected"
+                        : status == 4
+                        ? "Resigned"
+                        : status == 5
+                        ? "Applied"
+                        : "Applied"
+                    }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" [width]="70">
                 <ng-template ngx-datatable-cell-template>
                   <div class="mobile-hidden">
-                    <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                    <i
+                      class="ft-more-vertical text-primary cursor-pointer mr-2"
+                    ></i>
                     <i class="ft-edit text-primary cursor-pointer"></i>
                   </div>
                 </ng-template>
-
               </ngx-datatable-column>
             </ngx-datatable>
             <!--/ ngx-datatables responsive -->
-
           </div>
         </div>
       </div>
@@ -598,72 +1467,155 @@
         </div>
         <div class="card-content">
           <div class="card-body">
-
             <!-- ngx-datatable-multi-purpose -->
             <fieldset class="form-group">
-              <label for="ngx-filter-ref">Search:
-                <input id="ngx-MultiPurposeFilter-ref" class="form-control form-control-sm d-inline-block width-200"
-                  type="text" placeholder="Filter the Name column..." (keyup)="MultiPurposeFilterUpdate($event)" />
+              <label for="ngx-filter-ref"
+                >Search:
+                <input
+                  id="ngx-MultiPurposeFilter-ref"
+                  class="form-control form-control-sm d-inline-block width-200"
+                  type="text"
+                  placeholder="Filter the Name column..."
+                  (keyup)="MultiPurposeFilterUpdate($event)"
+                />
               </label>
             </fieldset>
-            <ngx-datatable #table class="bootstrap core-bootstrap header-height-50" [columns]="columns"
-              [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
-              [rows]="multiPurposeRows" [selectionType]="SelectionType.checkbox" [scrollbarH]="true">
-              <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-                [resizeable]="false">
-                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                  let-selectFn="selectFn">
+            <ngx-datatable
+              #table
+              class="bootstrap core-bootstrap header-height-50"
+              [columns]="columns"
+              [columnMode]="ColumnMode.force"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              rowHeight="auto"
+              [limit]="10"
+              [rows]="multiPurposeRows"
+              [selectionType]="SelectionType.checkbox"
+              [scrollbarH]="true"
+            >
+              <ngx-datatable-column
+                [width]="50"
+                [sortable]="false"
+                [canAutoResize]="false"
+                [draggable]="false"
+                [resizeable]="false"
+              >
+                <ng-template
+                  ngx-datatable-header-template
+                  let-value="value"
+                  let-allRowsSelected="allRowsSelected"
+                  let-selectFn="selectFn"
+                >
                   <div class="custom-control custom-checkbox">
-                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                    <input
+                      type="checkbox"
+                      [checked]="allRowsSelected"
+                      (change)="selectFn(!allRowsSelected)"
+                    />
                   </div>
                 </ng-template>
-                <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-                  let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-value="value"
+                  let-isSelected="isSelected"
+                  let-onCheckboxChangeFn="onCheckboxChangeFn"
+                >
                   <div class="custom-control custom-checkbox">
-                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                    <input
+                      type="checkbox"
+                      [checked]="isSelected"
+                      (change)="onCheckboxChangeFn($event)"
+                    />
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Name" prop="full_name" [width]="200">
-                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <ng-template
+                  let-row="row"
+                  let-name="value"
+                  ngx-datatable-cell-template
+                >
                   <div class="d-flex align-items-center">
                     <div *ngIf="row.avatar.length > 0; else customAvatar">
-                      <img class="rounded-circle mr-1" src="assets/img/portrait/small/{{row.avatar}}"
-                        height="32" width="32" alt="datatable-avatar">
+                      <img
+                        class="rounded-circle mr-1"
+                        src="assets/img/portrait/small/{{ row.avatar }}"
+                        height="32"
+                        width="32"
+                        alt="datatable-avatar"
+                      />
                     </div>
                     <ng-template #customAvatar>
-                      <div class="avatar mr-1 ml-0"
-                        [ngClass]="{'bg-primary': row.status == '1', 'bg-success':row.status == '2', 'bg-danger':row.status == '3' , 'bg-warning':row.status == '4', 'bg-info':row.status == '5'}  ">
+                      <div
+                        class="avatar mr-1 ml-0"
+                        [ngClass]="{
+                          'bg-primary': row.status == '1',
+                          'bg-success': row.status == '2',
+                          'bg-danger': row.status == '3',
+                          'bg-warning': row.status == '4',
+                          'bg-info': row.status == '5'
+                        }"
+                      >
                         <div class="avatar-content">{{ name | shortName }}</div>
                       </div>
                     </ng-template>
                     <div class="cell-line-height">
                       <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
                       <span class="text-muted font-small-2">
-                        {{ row.post }}</span>
+                        {{ row.post }}</span
+                      >
                     </div>
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Email" prop="email" [width]="250"></ngx-datatable-column>
-              <ngx-datatable-column name="Age" prop="age" [width]="50"></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Email"
+                prop="email"
+                [width]="250"
+              ></ngx-datatable-column>
+              <ngx-datatable-column
+                name="Age"
+                prop="age"
+                [width]="50"
+              ></ngx-datatable-column>
               <ngx-datatable-column name="Status" prop="status" [width]="100">
                 <ng-template let-status="value" ngx-datatable-cell-template>
-                  <div class="badge badge-pill"
-                    [ngClass]="{'bg-light-primary': status == '1', 'bg-light-success':status == '2', 'bg-light-danger':status == '3' , 'bg-light-warning':status == '4' , 'bg-light-info':status == '5'}">
-                    {{ status == 1 ? "Current" : (status == 2 ? "Professional" : (status == 3 ? "Rejected" : (status == 4 ? "Resigned" : status == 5 ? "Applied" : "Applied"))) }}
+                  <div
+                    class="badge badge-pill"
+                    [ngClass]="{
+                      'bg-light-primary': status == '1',
+                      'bg-light-success': status == '2',
+                      'bg-light-danger': status == '3',
+                      'bg-light-warning': status == '4',
+                      'bg-light-info': status == '5'
+                    }"
+                  >
+                    {{
+                      status == 1
+                        ? "Current"
+                        : status == 2
+                        ? "Professional"
+                        : status == 3
+                        ? "Rejected"
+                        : status == 4
+                        ? "Resigned"
+                        : status == 5
+                        ? "Applied"
+                        : "Applied"
+                    }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" [width]="70">
                 <ng-template ngx-datatable-cell-template>
-                  <i class="ft-more-vertical text-primary cursor-pointer mr-2"></i>
+                  <i
+                    class="ft-more-vertical text-primary cursor-pointer mr-2"
+                  ></i>
                   <i class="ft-edit text-primary cursor-pointer"></i>
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
             <!--/ ngx-datatable-multi-purpose -->
-
           </div>
         </div>
       </div>
