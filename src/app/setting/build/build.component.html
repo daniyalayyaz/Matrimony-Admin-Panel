@@ -1,0 +1,22 @@
+<div class="container my-4">
+    <form #entryForm="ngForm" (ngSubmit)="entryForm.valid && onSubmit(entryForm)">
+        <div class="form-group">
+            <label> Build</label>
+            <input type="text" class="form-control" placeholder="Enter Build" #name="ngModel"
+              [(ngModel)]="build.name" name="name" required
+              [ngClass]="{'invalid-textbox' :entryForm.submitted &#038;&#038; !build.valid }">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="true" checked 
+            [(ngModel)]="build.status" name="status">
+            <label class="form-check-label" for="flexCheckChecked">Status</label>
+          </div><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="success" *ngIf="showSucessMessage">
+            Saved successfully
+        </div>
+        <div class="alert alert-danger" *ngIf="serverErrorMessages">
+            {{serverErrorMessages}}
+        </div>
+    </form>
+</div>

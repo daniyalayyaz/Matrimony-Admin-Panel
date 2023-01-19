@@ -30,6 +30,8 @@ import { FullLayoutComponent } from "./layouts/full/full-layout.component";
 import { AuthService } from "./shared/auth/auth.service";
 import { AuthGuard } from "./shared/auth/auth-guard.service";
 import { WINDOW_PROVIDERS } from './shared/services/window.service';
+import { FormsModule } from "@angular/forms";
+import { PackagelistforassignComponent } from './pages/full-pages/packagelistforassign/packagelistforassign.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyC9XfnIpwNoSv7cyAsoccFQ5EYPd7lZXrk", //YOUR_API_KEY
@@ -53,7 +55,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, FullLayoutComponent, ContentLayoutComponent],
+  declarations: [AppComponent, FullLayoutComponent, ContentLayoutComponent, PackagelistforassignComponent],
   imports: [
     BrowserAnimationsModule,
     StoreModule.forRoot(fromApp.appReducer),
@@ -64,6 +66,7 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireAuthModule,
     ToastrModule.forRoot(),
     NgbModule,
+    FormsModule,
     NgxSpinnerModule,
     TranslateModule.forRoot({
       loader: {

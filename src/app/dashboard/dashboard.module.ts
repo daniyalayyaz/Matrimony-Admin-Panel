@@ -10,6 +10,9 @@ import { MatchHeightModule } from "../shared/directives/match-height.directive";
 
 import { Dashboard1Component } from "./dashboard1/dashboard1.component";
 import { Dashboard2Component } from "./dashboard2/dashboard2.component";
+import { PackageListComponent } from './package-list/package-list.component';
+import { PackageFormComponent } from './package-list/package-form/package-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,12 +23,16 @@ import { Dashboard2Component } from "./dashboard2/dashboard2.component";
         NgbModule,
         MatchHeightModule,
         NgApexchartsModule,
-        AngularResizedEventModule
+        AngularResizedEventModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [],
     declarations: [
         Dashboard1Component,
-        Dashboard2Component
+        Dashboard2Component,
+        PackageListComponent,
+        PackageFormComponent,
     ],
     providers: [],
 })

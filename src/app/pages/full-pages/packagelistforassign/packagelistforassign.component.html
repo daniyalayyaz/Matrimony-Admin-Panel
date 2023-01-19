@@ -1,0 +1,25 @@
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Package</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Connects</th>
+            <th scope="col">Assign</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let list of data ; let i= index; '>
+            <td>{{i+1}}</td>
+            <td>{{list.name}}</td>
+            <td>{{list.price}}</td>
+            <td>{{list.description}}</td>
+            <td>{{list.connect}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary" [(ngModel)]="list.active"
+                    (click)="assign(list)">Assign</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

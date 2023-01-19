@@ -1,62 +1,103 @@
-import { Component, ViewChild, OnInit, OnDestroy, Inject, Renderer2, ChangeDetectorRef, AfterViewInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
-import { ConfigService } from 'app/shared/services/config.service';
-import { LayoutService } from 'app/shared/services/layout.service';
+import { Component, OnInit } from '@angular/core';
+import { UserProfilePageService } from 'app/shared/services/user-profile-page.service';
 
-import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { PackageService } from 'app/dashboard/package.service';
 
 
 @Component({
-    selector: 'app-user-profile-page',
-    templateUrl: './user-profile-page.component.html',
-    styleUrls: ['./user-profile-page.component.scss']
+  selector: 'app-user-profile-page',
+  templateUrl: './user-profile-page.component.html',
+  styleUrls: ['./user-profile-page.component.scss']
 })
 
-export class UserProfilePageComponent implements OnInit, AfterViewInit, OnDestroy {
-  public config: any = {};
-  layoutSub: Subscription;
+export class UserProfilePageComponent implements OnInit {
+  data: any;
+  id: any;
+  activeUpdate: any;
+  activeTrue: any = true;
+  activeFalse: any = false
+  allPackage: any = [];
+  searchValue: any;
+  mainData: any;
 
-  public swipeConfig: SwiperConfigInterface = {
-    slidesPerView: 'auto',
-    centeredSlides: false,
-    spaceBetween: 15
-  };
-
-
-  @ViewChild(SwiperDirective, { static: false }) directiveRef?: SwiperDirective;
-
-  constructor(private configService: ConfigService,
-    private layoutService: LayoutService,
-    @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2, private cdr: ChangeDetectorRef
+  constructor(
+    private userProfilePage: UserProfilePageService,
+    private packageService: PackageService,
+    private router: Router, private activateRoute: ActivatedRoute,
   ) {
-    this.config = this.configService.templateConf;
   }
+  
+  ngOnInit() {
+    console.log("This is component");
+    this.get();
+    this.getPackage()
+  }
+  get() {
+    this.userProfilePage.get().then((res: []) => {
+      this.data = res;
+      this.mainData = res;
+      console.log(res);
+    });
 
-    ngOnInit() {
-      this.layoutSub = this.configService.templateConf$.subscribe((templateConf) => {
-        if (templateConf) {
-          this.config = templateConf;
+  };
+  getpackage(){
+    this.userProfilePage.getPackageById(this.mainData).subscribe((response:any)=>{
+      console.log(response);
+      
+    })
+  }
+  searchFunction() {
+    this.data = this.mainData;
+    if (this.searchValue) {
+      let filtered = this.data.filter((user: any) => {
+        if (user.name) {
+          if (user.name.includes(this.searchValue) || user.email.includes(this.searchValue) ||
+            user.personalContact.includes(this.searchValue)) {
+            return user;
+          }
         }
-        this.cdr.markForCheck();
-
+      });
+      this.data = filtered;
+    }
+  }
+  block(user: any) {
+    console.log(user);
+    this.userProfilePage.block(user._id).then((res: any) => {
+      // this.data = res;
+      console.log(res);
+    })
+  }
+  delete(user: any) {
+    console.log(user);
+    if (confirm("Are you sure to delete " + user.name)) {
+      this.data = this.data.filter(_user => _user._id !== user._id);
+      this.userProfilePage.delete(user._id).then((res: any) => {
+        console.log(res);
+        if (res.message === "User has been deleted") {
+          console.log("Filter local");
+          this.data = this.data.filter(_user => _user._id !== user._id);
+        }
       })
     }
-
-    ngAfterViewInit() {
-      let conf = this.config;
-      conf.layout.sidebar.collapsed = true;
-      this.configService.applyTemplateConfigChange({ layout: conf.layout });
+  }
+  profilestatus(value: any) {
+    if (value.active == true) {
+      this.activeUpdate = this.activeTrue
+    } else {
+      this.activeUpdate = this.activeFalse
     }
-
-    ngOnDestroy() {
-      let conf = this.config;
-      conf.layout.sidebar.collapsed = false;
-      this.configService.applyTemplateConfigChange({ layout: conf.layout });
-      if (this.layoutSub) {
-        this.layoutSub.unsubscribe();
-      }
-    }
-
-}
+    console.log(this.activeUpdate)
+    this.userProfilePage.update(value._id, this.activeUpdate).then((res: any) => {
+      this.data = res
+    });
+  }
+  getPackage() {
+    this.packageService.getPackage().then((res: any) => {
+      this.allPackage = res
+    });
+  };
+  packageLoad(id: any) {
+    this.router.navigate(['pages/package', id._id]);
+  }
+} 

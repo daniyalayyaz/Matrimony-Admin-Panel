@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { Dashboard1Component } from "./dashboard1/dashboard1.component";
 import { Dashboard2Component } from "./dashboard2/dashboard2.component";
+import { PackageFormComponent } from './package-list/package-form/package-form.component';
+import { PackageListComponent } from './package-list/package-list.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,20 @@ const routes: Routes = [
         component: Dashboard2Component,
         data: {
           title: 'Dashboard 2'
+        }
+      },
+      {
+        path: 'package',
+        component: PackageListComponent,
+        data: {
+          title: 'Package'
+        }
+      },
+      {
+        path: 'packageForm',
+        component: PackageFormComponent,
+        data: {
+          title: 'Package'
         }
       },
     ]

@@ -1,0 +1,41 @@
+<div class="container my-4">
+    <form #entryForm="ngForm" (ngSubmit)="entryForm.valid && onSubmit(entryForm)">
+        <div class="form-group">
+            <label> Package</label>
+            <input type="text" class="form-control" placeholder="Enter Name" #name="ngModel"
+              [(ngModel)]="package.name" name="name" required
+              [ngClass]="{'invalid-textbox' :entryForm.submitted &#038;&#038; !package.valid }">
+        </div>
+        <div class="form-group">
+            <label> Price</label>
+            <input type="number" class="form-control" placeholder="Enter Price" #price="ngModel"
+              [(ngModel)]="package.price" name="price" required
+              [ngClass]="{'invalid-textbox' :entryForm.submitted &#038;&#038; !price.valid }">
+        </div>
+        <div class="form-group">
+              <label for="formFile" class="form-label">Image</label>
+              <input class="form-control" type="file" id="formFile" #image="ngModel"
+              [(ngModel)]="package.image" name="image" required
+              [ngClass]="{'invalid-textbox' :entryForm.submitted &#038;&#038; !image.valid }">
+        </div>
+        <div class="form-group">
+            <label> Description</label>
+            <input type="text" class="form-control" placeholder="Enter Description" #description="ngModel"
+              [(ngModel)]="package.description" name="description" required
+              [ngClass]="{'invalid-textbox' :entryForm.submitted &#038;&#038; !description.valid }">
+        </div>
+        <div class="form-group">
+            <label> Connects</label>
+            <input type="number" class="form-control" placeholder="Enter Connects For this Package"connect="ngModel"
+              [(ngModel)]="package.connect" name="connect" required
+              [ngClass]="{'invalid-textbox' :entryForm.submitted &#038;&#038; !price.valid }">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="success" *ngIf="showSucessMessage">
+            Saved successfully
+        </div>
+        <div class="alert alert-danger" *ngIf="serverErrorMessages">
+            {{serverErrorMessages}}
+        </div>
+    </form>
+</div>

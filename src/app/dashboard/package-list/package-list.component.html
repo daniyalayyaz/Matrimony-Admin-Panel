@@ -1,0 +1,31 @@
+<table class="table table-striped ">
+    <thead>
+        <a class="btn btn-danger btn-sm mr-1 mb-1" (click)="urlrouting()"><i class="fa fa-plus mr-1"></i>New</a>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Package</th>
+            <th scope="col">Price</th>
+            <th scope="col">description</th>
+            <th scope="col">Connects</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let list of data ; let i= index; '>
+            <td>{{i+1}}</td>
+            <td>{{list.name}}</td>
+            <td>{{list.price}}</td>
+            <td>{{list.connect}}</td>
+            <td>
+                <!--  <a (click)="edit(list)" class="btn-sm btn btn-primary text-center" title="Edit text-bold-400 rounded"><i
+                        class="fa fa-edit"></i></a>-->
+
+                {{list.description}}
+            </td>
+            <td>
+                <a (click)="delete(list)" class="btn-sm btn btn-danger text-center" title="Delete"><i
+                        class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

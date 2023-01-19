@@ -1,0 +1,19 @@
+
+<div class="container my-4">
+    <form (ngSubmit)="update()" [formGroup]="form">
+      <div class="form-group">
+        <label class="font-weight-bold">Cast</label>
+        <input type="text" class="form-control" placeholder="Enter.." formControlName="name" [(ngModel)]="edititem.name">
+      </div>
+      <div class="form-check">
+        <input type="checkbox" placeholder="Enter.." formControlName="status" [(ngModel)]="edititem.status">
+        <label class="form-check-label" for="flexCheckChecked">Status</label>
+      </div><br>
+      <div class="mb-4 px-2">
+        <button class="btn btn-primary" type="submit">Update </button>
+      </div>
+      <div class="alert alert-danger" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+      </div>
+    </form>
+  </div>

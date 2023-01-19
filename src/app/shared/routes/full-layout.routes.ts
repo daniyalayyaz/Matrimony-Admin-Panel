@@ -1,4 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
+import { PackagelistforassignComponent } from 'app/pages/full-pages/packagelistforassign/packagelistforassign.component';
+import { ReligionComponent } from 'app/setting/religion/religion.component';
 
 //Route for content layout with sidebar, navbar and footer.
 
@@ -66,5 +68,14 @@ export const Full_ROUTES: Routes = [
   {
     path: 'taskboard-ngrx',
     loadChildren: () => import('../../taskboard-ngrx/taskboard-ngrx.module').then(m => m.TaskboardNGRXModule)
+  },
+  {
+    path:'setting',
+    loadChildren: () =>
+      import('../../setting/setting.module').then(m => m.SettingModule),
+  },
+  {
+    path:'pages/package/:id',
+    component:PackagelistforassignComponent
   }
 ];
