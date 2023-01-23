@@ -8,6 +8,7 @@ import { LockScreenPageComponent } from "./lock-screen/lock-screen-page.componen
 import { LoginPageComponent } from "./login/login-page.component";
 import { MaintenancePageComponent } from "./maintenance/maintenance-page.component";
 import { RegisterPageComponent } from "./register/register-page.component";
+import { SubAdminRegisterPageComponent } from '../full-pages/sub-admin/sub-admin-register-page.component';
 
 
 const routes: Routes = [
@@ -63,7 +64,8 @@ const routes: Routes = [
         data: {
           title: 'Register Page'
         }
-      }   
+      },
+      
       
     ]
   }

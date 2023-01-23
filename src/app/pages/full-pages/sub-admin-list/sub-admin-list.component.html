@@ -1,9 +1,9 @@
 <div class="row align-items-center">
     <div class="col-md-8">
-        <input type="text" class="my-2 form-control ng-pristine ng-invalid ng-touched" [(ngModel)]=searchValue
-            (ngModelChange)="searchFunction(null)" placeholder="Search by Name/Email/Phone" />
+        <!-- <input type="text" class="my-2 form-control ng-pristine ng-invalid ng-touched" [(ngModel)]=searchValue
+            (ngModelChange)="searchFunction(null)" placeholder="Search by Name/Email/Phone" /> -->
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
         <div class="btn-group ml-1">
             <div ngbDropdown display="dynamic" [placement]="placement" class="d-inline-block">
                 <button class="btn btn-sm bg-light-secondary dropdown-toggle" id="dropdownBasic1" style="width: 150px;"
@@ -17,20 +17,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
+<a class="btn btn-danger btn-sm mr-1 mb-1" (click)="urlrouting()"><i class="fa fa-plus mr-1"></i>New</a>
+
 <table class="table table-striped ">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <!-- <th scope="col">Age</th> -->
-            <!-- <th scope="col">Gender</th> -->
-            <th scope="col">Phone</th>
-            <!-- <th scope="col">Adreess</th> -->
             <th scope="col">Email</th>
             <th scope="col">Active/InActive</th>
-            <th scope="col" class="text-center">Assign</th>
             <th scope="col" class="text-center">Actions</th>
 
         </tr>
@@ -39,25 +36,15 @@
         <tr *ngFor='let list of data ; let i= index; '>
             <td>{{i+1}}</td>
             <td>{{list.name}}</td>
-            <td>{{list.personalContact}}</td>
-            <td>{{list.email}}</td>
+            <td>{{list.username}}</td>
             <td>
-                <!-- <input class="form-check-input margin" type="checkbox" role="switch"value='list.active' checked
-                    [(ngModel)]="list.active" (change)="profilestatus(list)"> -->
-                    <!-- Default checked -->
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="{{i}}"value='list.active' checked
-                [(ngModel)]="list.active" (change)="profilestatus(list)">
-                <label class="custom-control-label" for="{{i}}"></label>
-            </div>
-            </td>
-            <td>
-                <button type="submit" class="btn btn-primary" (click)="packageLoad(list)">Package</button>
+                <input class="form-check-input margin" type="checkbox" value='list.active' checked
+                    [(ngModel)]="list.active" (change)="profilestatus(list)">
             </td>
             <td>
                 <!-- <button class="btn btn-sm mr-1" [ngClass]="{'btn-success': list.BlockStatus === true, 'btn-danger': list.BlockStatus === false}" (click)="block(list)"><i class="fa fa-ban"></i></button> -->
                 <button class="btn btn-danger btn-sm" (click)="delete(list)"><i class="fa fa-trash"></i></button>
-                <button *ngIf="list.reported && showReported" class="btn btn-info btn-sm mx-2" (click)="viewReport(list._id)"><i class="fa fa-eye"></i></button>
+                <!-- <button *ngIf="list.reported && showReported" class="btn btn-info btn-sm mx-2" (click)="viewReport(list._id)"><i class="fa fa-eye"></i></button> -->
                 <!-- <button class="btn btn-danger btn-sm mx-1" (click)="block(list)"><i class="fa fa-thumbs-up"></i></button>
                 <button class="btn btn-danger btn-sm" (click)="block(list)"><i class="fa fa-thumbs-down"></i></button> -->
             </td>

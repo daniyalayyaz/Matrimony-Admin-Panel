@@ -15,6 +15,12 @@ export class PackageService {
   getPackage() {
     return this.http.get(environment.apiBaseUrl + '/user/getPackage').toPromise()
   };
+  addPromotion(data: any) {
+    return this.http.post(environment.apiBaseUrl + '/admin/promotionAdd', data).toPromise()
+  };
+  getPromotion() {
+    return this.http.get(environment.apiBaseUrl + '/admin/promotionget').toPromise()
+  };
   // getPackageById(id: any) {
   //   return this.http.get(`${environment.apiBaseUrl}/package/${id}`).toPromise();
   // };
@@ -23,5 +29,8 @@ export class PackageService {
   // };
   deletePackage(id: any) {
     return this.http.delete(`${environment.apiBaseUrl}/user/deletePackage/${id}`).toPromise();
+  };
+  deletePromotion(id: any) {
+    return this.http.delete(`${environment.apiBaseUrl}/admin/deletePromotion/${id}`).toPromise();
   };
 }

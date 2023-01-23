@@ -13,6 +13,8 @@ import { Dashboard2Component } from "./dashboard2/dashboard2.component";
 import { PackageListComponent } from './package-list/package-list.component';
 import { PackageFormComponent } from './package-list/package-form/package-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PromotionComponent } from './promotion/promotion.component';
+import { PromotionListComponent } from './promotion/promotion-list/promotion-list.component';
 
 
 @NgModule({
@@ -25,14 +27,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         NgApexchartsModule,
         AngularResizedEventModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     exports: [],
     declarations: [
         Dashboard1Component,
         Dashboard2Component,
         PackageListComponent,
-        PackageFormComponent,
+        PackageFormComponent,        
+        PromotionComponent,
+        PromotionListComponent,
     ],
     providers: [],
 })

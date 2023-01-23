@@ -30,4 +30,7 @@ export class UserProfilePageService {
   getPackageById(id:any) {
     return this.http.get(`${environment.apiBaseUrl}/user/imageUpload/${id}`)
   }
+  getReports(){
+    return this.http.get(environment.apiBaseUrl + '/admin/getAllReports').toPromise();
+  }
 }

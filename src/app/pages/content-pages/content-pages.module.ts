@@ -44,7 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
     LockScreenPageComponent,
     LoginPageComponent,
     MaintenancePageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
   ]
 })
 export class ContentPagesModule { }

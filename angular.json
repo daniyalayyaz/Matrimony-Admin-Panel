@@ -159,6 +159,8 @@
       }
     }
   },
+  "defaultProject": "apex-admin",
+
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

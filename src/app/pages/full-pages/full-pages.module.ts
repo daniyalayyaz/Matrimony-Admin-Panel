@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, NgModel, ReactiveFormsModule } from "@angular/forms";
 
 import { FullPagesRoutingModule } from "./full-pages-routing.module";
 import { ChartistModule } from "ng-chartist";
@@ -26,6 +26,8 @@ import { UsersViewComponent } from "./users/users-view/users-view.component";
 import { UsersEditComponent } from "./users/users-edit/users-edit.component";
 
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
+import { SubAdminRegisterPageComponent } from "./sub-admin/sub-admin-register-page.component";
+import { SubAdminListComponent } from "./sub-admin-list/sub-admin-list";
 @NgModule({
   imports: [
     CommonModule,
@@ -55,6 +57,8 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
     UsersListComponent,
     UsersViewComponent,
     UsersEditComponent,
+    SubAdminRegisterPageComponent,
+    SubAdminListComponent,
   ],
 })
 export class FullPagesModule {}

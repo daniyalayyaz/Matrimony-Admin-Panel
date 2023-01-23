@@ -15,6 +15,8 @@ import { UsersListComponent } from './users/users-list/users-list.component';
 import { UsersViewComponent } from './users/users-view/users-view.component';
 import { UsersEditComponent } from './users/users-edit/users-edit.component';
 import { PackagelistforassignComponent } from './packagelistforassign/packagelistforassign.component';
+import { SubAdminRegisterPageComponent } from './sub-admin/sub-admin-register-page.component';
+import { SubAdminListComponent } from './sub-admin-list/sub-admin-list';
 
 const routes: Routes = [
   {
@@ -122,7 +124,22 @@ const routes: Routes = [
         data: {
           title: 'Edit'
         }
+      },
+      {
+        path:'sub-admin-register',
+        component:SubAdminRegisterPageComponent,
+        data:{
+          title:'Sub-Admin Register'
+        }
+      },
+      {
+        path:'sub-admin-list',
+        component:SubAdminListComponent,
+        data:{
+          title:'Sub-Admin List'
+        }
       }
+       
     ]
   }
 ];
