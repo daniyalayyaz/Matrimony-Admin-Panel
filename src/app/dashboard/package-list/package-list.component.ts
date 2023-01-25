@@ -26,9 +26,11 @@ export class PackageListComponent implements OnInit {
   };
  
 
-  // edit(id: any) {
-  //   this.router.navigate(['/setting/build-edit', id._id]);
-  // }
+  edit(id: any) {
+    console.log(id);
+    
+    this.router.navigate(['/dashboard/packageEdit',id._id]);
+  }
   delete(p: any) {
     if (confirm("Are you sure to delete " + p.name)) {
       this.data = this.data.filter(_user => _user._id !== p._id);

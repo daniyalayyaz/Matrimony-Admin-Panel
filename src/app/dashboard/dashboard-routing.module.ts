@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { Dashboard1Component } from "./dashboard1/dashboard1.component";
 import { Dashboard2Component } from "./dashboard2/dashboard2.component";
+import { PackageEditComponent } from './package-list/package-edit/package-edit.component';
 import { PackageFormComponent } from './package-list/package-form/package-form.component';
 import { PackageListComponent } from './package-list/package-list.component';
+import { PromotionEditComponent } from './promotion/promotion-edit/promotion-edit.component';
 import { PromotionListComponent } from './promotion/promotion-list/promotion-list.component';
 import { PromotionComponent } from './promotion/promotion.component';
 
@@ -54,6 +56,20 @@ const routes: Routes = [
           title: 'PromotionList'
         }
       },
+      {
+        path: 'promotionEdit/:id',
+        component: PromotionEditComponent,
+        data: {
+          title: 'PromotionEdit'
+        }
+      },
+      {
+        path:'packageEdit/:id',
+        component: PackageEditComponent,
+        data: {
+          title: "PackageEdit"
+        }
+      }
     ]
   }
 ];

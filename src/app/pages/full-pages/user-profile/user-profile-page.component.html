@@ -14,6 +14,8 @@
                     <button class="dropdown-item w-100" (click)="searchFunction('In-Active')">Inactive User</button>
                     <button class="dropdown-item w-100" (click)="searchFunction('Reported')">Reported Users</button>
                     <button class="dropdown-item w-100" (click)="searchFunction('Premium')">Premium Users</button>
+                    <button class="dropdown-item w-100" (click)="searchFunction('Blocked')">Blocked Users</button>
+                    <button class="dropdown-item w-100" (click)="searchFunction('DeleteRequested')">Delete Requests</button>
                 </div>
             </div>
         </div>
@@ -45,7 +47,7 @@
                 <!-- <input class="form-check-input margin" type="checkbox" role="switch"value='list.active' checked
                     [(ngModel)]="list.active" (change)="profilestatus(list)"> -->
                     <!-- Default checked -->
-            <div class="custom-control custom-switch">
+            <div class="custom-control custom-switch text-center">
                 <input type="checkbox" class="custom-control-input" id="{{i}}"value='list.active' checked
                 [(ngModel)]="list.active" (change)="profilestatus(list)">
                 <label class="custom-control-label" for="{{i}}"></label>
@@ -58,6 +60,7 @@
                 <!-- <button class="btn btn-sm mr-1" [ngClass]="{'btn-success': list.BlockStatus === true, 'btn-danger': list.BlockStatus === false}" (click)="block(list)"><i class="fa fa-ban"></i></button> -->
                 <button class="btn btn-danger btn-sm" (click)="delete(list)"><i class="fa fa-trash"></i></button>
                 <button *ngIf="list.reported && showReported" class="btn btn-info btn-sm mx-2" (click)="viewReport(list._id)"><i class="fa fa-eye"></i></button>
+                <button *ngIf="showBlocked" class="btn btn-info btn-sm mx-2" (click)="viewBlocked(list._id)"><i class="fa fa-eye"></i></button>
                 <!-- <button class="btn btn-danger btn-sm mx-1" (click)="block(list)"><i class="fa fa-thumbs-up"></i></button>
                 <button class="btn btn-danger btn-sm" (click)="block(list)"><i class="fa fa-thumbs-down"></i></button> -->
             </td>

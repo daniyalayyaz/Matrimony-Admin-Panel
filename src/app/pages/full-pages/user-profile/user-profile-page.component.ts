@@ -26,7 +26,8 @@ export class UserProfilePageComponent implements OnInit {
   showReported = false;
   allReports: any = [];
   userReports: any = [];
-
+  blockedUsers: any;
+  showBlocked = false;
   constructor(
     private userProfilePage: UserProfilePageService,
     private packageService: PackageService,
@@ -54,6 +55,7 @@ export class UserProfilePageComponent implements OnInit {
   searchFunction(filter: any) {
     this.data = this.mainData;
     this.showReported = false;
+    this.showBlocked = false;
     if (filter) {
       this.currentFilter = filter;
     }
@@ -72,16 +74,22 @@ export class UserProfilePageComponent implements OnInit {
     } else if (this.currentFilter === "Premium") {
       let filtered = this.data.filter((user: any) => user.package);
       this.data = filtered;
+    } else if (this.currentFilter === "Blocked") {
+      const filtered = this.data.filter(element => {
+        return this.data.some(elem => elem.Block.includes(element._id));
+      });
+      console.log(filtered);
+      this.data = filtered;
+      this.showBlocked = true;
+    } else if(this.currentFilter === "DeleteRequested"){
+      const filtered = this.data.filter((_user) => !_user.requestToDelete);
+      this.data = filtered;
     }
     if (this.searchValue) {
-      let filtered = this.data.filter((user: any) => {
-        if (user.name) {
-          if (user.name?.includes(this.searchValue) || user.email?.includes(this.searchValue) ||
-            user.personalContact?.includes(this.searchValue)) {
-            return user;
-          }
-        }
+      const filtered = this.data.filter(element => {
+        return this.data.some(elem => elem.Block.includes(element._id));
       });
+      console.log(filtered);
       this.data = filtered;
     }
   };
@@ -108,7 +116,6 @@ export class UserProfilePageComponent implements OnInit {
     }
     console.log(this.activeUpdate)
     this.userProfilePage.update(value._id, this.activeUpdate).then((res: any) => {
-      this.data = res
     });
   }
   getPackage() {
@@ -146,5 +153,21 @@ export class UserProfilePageComponent implements OnInit {
       confirmButtonText: 'OK',
       confirmButtonColor: "#2f8be6"
     });
+  }
+  viewBlocked(_userId: any) {
+    console.log(_userId);
+    const _blockedBy = this.mainData.filter((_user: any) => _user.Block.includes(_userId));
+    console.log(_blockedBy);
+    let usersList = '';
+    for(let i = 0; i < _blockedBy.length; i++){
+      usersList += `<li class='border text-left my-1'><span class='font-weight-bold'> Name:</span> ${_blockedBy[i].name.charAt(0).toUpperCase() + _blockedBy[i].name.slice(1)}</li>`
+    }
+    Swal.fire({
+      title: 'Blocked By',
+      icon: 'info',
+      html: `<ul> ${usersList} </ul>`,
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#2f8be6"
+    })
   }
 } 

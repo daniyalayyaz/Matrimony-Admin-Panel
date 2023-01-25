@@ -1,52 +1,40 @@
-<div class="row align-items-center">
-    <div class="col-md-8">
-        <!-- <input type="text" class="my-2 form-control ng-pristine ng-invalid ng-touched" [(ngModel)]=searchValue
-            (ngModelChange)="searchFunction(null)" placeholder="Search by Name/Email/Phone" /> -->
-    </div>
-    <!-- <div class="col-md-4">
-        <div class="btn-group ml-1">
-            <div ngbDropdown display="dynamic" [placement]="placement" class="d-inline-block">
-                <button class="btn btn-sm bg-light-secondary dropdown-toggle" id="dropdownBasic1" style="width: 150px;"
-                    ngbDropdownToggle>{{currentFilter}}</button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button class="dropdown-item w-100" (click)="searchFunction('All')">All</button>
-                    <button class="dropdown-item w-100" (click)="searchFunction('Active')">Active Users</button>
-                    <button class="dropdown-item w-100" (click)="searchFunction('In-Active')">Inactive User</button>
-                    <button class="dropdown-item w-100" (click)="searchFunction('Reported')">Reported Users</button>
-                    <button class="dropdown-item w-100" (click)="searchFunction('Premium')">Premium Users</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-</div>
 <a class="btn btn-danger btn-sm mr-1 mb-1" (click)="urlrouting()"><i class="fa fa-plus mr-1"></i>New</a>
-
 <table class="table table-striped ">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Active/InActive</th>
+            <th scope="col" >#</th>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">User Name</th>
+            <th scope="col" class="text-center">Status</th>
+            <th scope="col" class="text-center">Edit</th>
             <th scope="col" class="text-center">Actions</th>
 
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let list of data ; let i= index; '>
+        <tr *ngFor='let list of data ; let i= index;'>
             <td>{{i+1}}</td>
-            <td>{{list.name}}</td>
-            <td>{{list.username}}</td>
-            <td>
-                <input class="form-check-input margin" type="checkbox" value='list.active' checked
-                    [(ngModel)]="list.active" (change)="profilestatus(list)">
+            <td class="text-center">{{list.name}}</td>
+            <td class="text-center">{{list.userName}}</td>
+            <td  class="text-center"> 
+                <!-- <input class="form-check-input margin" type="checkbox" value='list.status' checked
+                    [(ngModel)]="list.status" (change)="profilestatus(list)"> -->
+                    <div class="custom-control custom-switch text-center">
+                        <input type="checkbox" class="custom-control-input" id="status"value='list.status' checked
+                        [(ngModel)]="list.status" (change)="profilestatus(list.status)">
+                        <label class="custom-control-label" for="status"></label>
+                    </div>
             </td>
-            <td>
-                <!-- <button class="btn btn-sm mr-1" [ngClass]="{'btn-success': list.BlockStatus === true, 'btn-danger': list.BlockStatus === false}" (click)="block(list)"><i class="fa fa-ban"></i></button> -->
-                <button class="btn btn-danger btn-sm" (click)="delete(list)"><i class="fa fa-trash"></i></button>
-                <!-- <button *ngIf="list.reported && showReported" class="btn btn-info btn-sm mx-2" (click)="viewReport(list._id)"><i class="fa fa-eye"></i></button> -->
-                <!-- <button class="btn btn-danger btn-sm mx-1" (click)="block(list)"><i class="fa fa-thumbs-up"></i></button>
-                <button class="btn btn-danger btn-sm" (click)="block(list)"><i class="fa fa-thumbs-down"></i></button> -->
+            <th class="text-center">
+                <div class="custom-control custom-switch text-center">
+                    <input type="checkbox" class="custom-control-input" id="{{j}}"value='list.edit' checked
+                    [(ngModel)]="list.edit" (change)="profilestatus(list.edit)">
+                    <label class="custom-control-label" for="{{j}}"></label>
+                </div>
+            </th>
+            <td  class="text-center">
+                <button class="btn btn-info btn-sm" (click)="edit(list)"><i class="fa fa-edit"></i></button>
+                <button class="btn btn-danger btn-sm" (click)="deleteSubAdmin(list)"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
     </tbody>

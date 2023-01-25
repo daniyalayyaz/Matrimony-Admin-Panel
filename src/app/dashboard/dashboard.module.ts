@@ -15,6 +15,8 @@ import { PackageFormComponent } from './package-list/package-form/package-form.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PromotionComponent } from './promotion/promotion.component';
 import { PromotionListComponent } from './promotion/promotion-list/promotion-list.component';
+import { PackageEditComponent } from './package-list/package-edit/package-edit.component';
+import { PromotionEditComponent } from './promotion/promotion-edit/promotion-edit.component';
 
 
 @NgModule({
@@ -34,8 +36,10 @@ import { PromotionListComponent } from './promotion/promotion-list/promotion-lis
         Dashboard1Component,
         Dashboard2Component,
         PackageListComponent,
+        PackageEditComponent,
         PackageFormComponent,        
         PromotionComponent,
+        PromotionEditComponent,
         PromotionListComponent,
     ],
     providers: [],

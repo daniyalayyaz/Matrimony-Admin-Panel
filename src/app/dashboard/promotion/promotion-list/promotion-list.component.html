@@ -5,7 +5,7 @@
             <th scope="col">#</th>
             <th scope="col">Promotion</th>
             <th scope="col">description</th>
-            <th scope="col">Active/Inactive</th>
+            <th scope="col" class="text-center">Active/Inactive</th>
         </tr>
     </thead>
     <tbody>
@@ -13,12 +13,11 @@
             <td>{{i+1}}</td>
             <td>{{list.name}}</td>
             <td>
-                <!--  <a (click)="edit(list)" class="btn-sm btn btn-primary text-center" title="Edit text-bold-400 rounded"><i
-                        class="fa fa-edit"></i></a>-->
+                
 
                 {{list.description}}
             </td>
-            <td>
+            <td class="text-center">
                 <!-- <div class="form-check form-switch">
                 <input class="form-check-input" #saveUserNameCheckBox type="checkbox" role="switch"
                     [checked]="saveUsername"
@@ -29,8 +28,11 @@
             {{list.promotionShow}}
         </td>
             <td>
-                <a (click)="delete(list)" class="btn-sm btn btn-danger text-center" title="Delete"><i
-                        class="fa fa-trash"></i></a>
+                <button (click)="edit(list)" class="btn-sm btn btn-primary text-center" title="Edit text-bold-400 rounded"><i
+                    class="fa fa-edit"></i></button>
+                <button (click)="delete(list)" class="btn-sm btn btn-danger text-center" title="Delete"><i
+                        class="fa fa-trash"></i></button>
+                        
             </td>
         </tr>
     </tbody>

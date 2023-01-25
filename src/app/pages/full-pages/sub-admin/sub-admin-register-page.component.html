@@ -61,17 +61,18 @@
                   </div>
                   <div class="form-group">
                     <div class="custom-switch">
-                      <input type="checkbox" id="view" formControlName="view" class=" custom-control-input" checked>
-                      <label class="custom-control-label" for="view">
-                        <span class="font-small-2 mb-3 font-weight-normal">This User Only See Other Users Activities</span>
+                      <input type="checkbox" id="edit" formControlName="edit" class=" custom-control-input" checked>
+                      <label class="custom-control-label" for="edit" value="">
+                        <span class="font-small-2 mb-3 font-weight-normal">This User See Other Users And Edit Activities</span>
                       </label>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="custom-switch">
-                      <input type="checkbox" id="edit" formControlName="edit" class=" custom-control-input" checked>
-                      <label class="custom-control-label" for="edit">
-                        <span class="font-small-2 mb-3 font-weight-normal">This User See Other Users And Edit Activities</span>
+                      <input type="checkbox" id="status" formControlName="status" class=" custom-control-input" checked  
+                      >
+                      <label class="custom-control-label" for="status" >
+                        <span class="font-small-2 mb-3 font-weight-normal">Sub Admin Account Active Or Inactive</span>
                       </label>
                     </div>
                   </div>
@@ -80,8 +81,6 @@
                     <a class="btn btn-primary" (click)="onSubmit()">Create</a>
                   </div>
                 </form>
-
-
               </div>
             </div>
           </div>

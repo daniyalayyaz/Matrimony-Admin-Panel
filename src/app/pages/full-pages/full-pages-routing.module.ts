@@ -17,6 +17,7 @@ import { UsersEditComponent } from './users/users-edit/users-edit.component';
 import { PackagelistforassignComponent } from './packagelistforassign/packagelistforassign.component';
 import { SubAdminRegisterPageComponent } from './sub-admin/sub-admin-register-page.component';
 import { SubAdminListComponent } from './sub-admin-list/sub-admin-list';
+import { SubAdminEditComponent } from './sub-admin-edit/sub-admin-edit.component';
 
 const routes: Routes = [
   {
@@ -125,6 +126,7 @@ const routes: Routes = [
           title: 'Edit'
         }
       },
+      
       {
         path:'sub-admin-register',
         component:SubAdminRegisterPageComponent,
@@ -137,6 +139,13 @@ const routes: Routes = [
         component:SubAdminListComponent,
         data:{
           title:'Sub-Admin List'
+        }
+      },
+      {
+        path:'sub-admin-edit/:id',
+        component:SubAdminEditComponent,
+        data:{
+          title:'Sub Admin Edit'
         }
       }
        

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { PackageService } from 'app/dashboard/package.service';
 import { Role } from 'app/pages/_model/role';
+import { PagesService } from 'app/shared/services/pages.service';
 
 
 @Component({
@@ -33,30 +34,44 @@ export class SubAdminListComponent implements OnInit {
     private userProfilePage: UserProfilePageService,
     private packageService: PackageService,
     private router: Router, private activateRoute: ActivatedRoute,
+    private pagesService: PagesService
   ) {
   }
   ngOnInit() {
     // this.getAllReports();
-    this.get();
+    // this.get();
     // this.getPackage();
+    this.SubAdminList()
   }
-  get() {
+  // get() {
 
-    // copy
-    this.userProfilePage.get().then((res: []) => {
-      console.log(res);
-      this.adminList = res;
-      let filtered = this.adminList.filter((user: any) => {
-        if (user.role?.includes(Role.Admin)) {
-          return user;
-        }
-      });
-      console.log(filtered);
-      this.data = filtered;
-    });
-  };
+  //   // copy
+  //   this.userProfilePage.get().then((res: []) => {
+  //     console.log(res);
+  //     this.adminList = res;
+  //     let filtered = this.adminList.filter((user: any) => {
+  //       if (user.role?.includes(Role.Admin)) {
+  //         return user;
+  //       }
+  //     });
+  //     console.log(filtered);
+  //     this.data = filtered;
+  //   });
+  // };
   urlrouting(){
     this.router.navigate(['/pages/sub-admin-register']);
+  }
+  SubAdminList(){
+    this.pagesService.getSubAdminList().then((res:any)=>{
+      console.log(res);
+      this.data = res;
+      
+    })
+  }
+  edit(id: any) {
+    console.log(id);
+    
+    this.router.navigate(['/pages/sub-admin-edit',id._id]);
   }
   // searchFunction(filter: any) {
   //   this.data = this.mainData;
@@ -97,27 +112,29 @@ export class SubAdminListComponent implements OnInit {
   //     // this.data = res;
   //   })
   // }
-  // delete(user: any) {
-  //   if (confirm("Are you sure to delete " + user.name)) {
-  //     this.data = this.data.filter(_user => _user._id !== user._id);
-  //     this.userProfilePage.delete(user._id).then((res: any) => {
-  //       if (res.message === "User has been deleted") {
-  //         this.data = this.data.filter(_user => _user._id !== user._id);
-  //       }
-  //     })
-  //   }
-  // }
-  // profilestatus(value: any) {
-  //   if (value.active == true) {
-  //     this.activeUpdate = this.activeTrue
-  //   } else {
-  //     this.activeUpdate = this.activeFalse
-  //   }
-  //   console.log(this.activeUpdate)
-  //   this.userProfilePage.update(value._id, this.activeUpdate).then((res: any) => {
-  //     this.data = res
-  //   });
-  // }
+  deleteSubAdmin(user: any) {
+    if (confirm("Are you sure to delete " + user.name)) {
+      this.data = this.data.filter(_user => _user._id !== user._id);
+      this.pagesService.deleteSubAdmin(user._id).then((res: any) => {
+        if (res.message === "User has been deleted") {
+          this.data = this.data.filter(_user => _user._id !== user._id);
+        }
+      })
+    }
+  }
+  profilestatus(value: any) {
+    // if (value.active == true) {
+    //   this.activeUpdate = this.activeTrue
+    // } else {
+    //   this.activeUpdate = this.activeFalse
+    // }
+    console.log(value);
+    
+    // console.log(this.activeUpdate)
+    // this.userProfilePage.update(value._id, this.activeUpdate).then((res: any) => {
+    //   this.data = res
+    // });
+  }
   // getPackage() {
   //   this.packageService.getPackage().then((res: any) => {
   //     this.allPackage = res

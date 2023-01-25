@@ -28,6 +28,7 @@ import { UsersEditComponent } from "./users/users-edit/users-edit.component";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { SubAdminRegisterPageComponent } from "./sub-admin/sub-admin-register-page.component";
 import { SubAdminListComponent } from "./sub-admin-list/sub-admin-list";
+import { SubAdminEditComponent } from "./sub-admin-edit/sub-admin-edit.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -59,6 +60,7 @@ import { SubAdminListComponent } from "./sub-admin-list/sub-admin-list";
     UsersEditComponent,
     SubAdminRegisterPageComponent,
     SubAdminListComponent,
+    SubAdminEditComponent,
   ],
 })
 export class FullPagesModule {}
