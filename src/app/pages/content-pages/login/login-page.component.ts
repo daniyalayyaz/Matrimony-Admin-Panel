@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+// import { NgForm, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from 'app/shared/auth/auth.service';
+import { PagesService } from 'app/shared/services/pages.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
 
@@ -16,16 +18,16 @@ export class LoginPageComponent {
   loginFormSubmitted = false;
   isLoginFailed = false;
 
-  loginForm = new UntypedFormGroup({
-    username: new UntypedFormControl('guest@apex.com', [Validators.required]),
-    password: new UntypedFormControl('Password', [Validators.required]),
-    rememberMe: new UntypedFormControl(true)
+  loginForm = new FormGroup({
+    username: new FormControl('guest@apex.com', [Validators.required]),
+    password: new FormControl('Password', [Validators.required]),
+    rememberMe: new FormControl(true)
   });
 
 
   constructor(private router: Router, private authService: AuthService,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute) {
+    private pagesService: PagesService,) {
   }
 
   get lf() {
@@ -34,10 +36,7 @@ export class LoginPageComponent {
 
   // On submit button click
   onSubmit() {
-    this.loginFormSubmitted = true;
-    if (this.loginForm.invalid) {
-      return;
-    }
+    console.log(this.loginForm.value);
 
     this.spinner.show(undefined,
       {
@@ -48,19 +47,31 @@ export class LoginPageComponent {
         fullScreen: true
       });
 
-    this.authService.signinUser(this.loginForm.value.username, this.loginForm.value.password)
-      .then((res) => {
+    if (this.loginForm.value.username === "guest@apex.com" && this.loginForm.value.password === "Password") {
+      this.authService.signinUser(this.loginForm.value.username, this.loginForm.value.password)
+        .then((res) => {
+          this.spinner.hide();
+          this.router.navigate(['/dashboard/dashboard1']);
+        })
+        .catch((err) => {
+          this.isLoginFailed = true;
+          this.spinner.hide();
+          // console.log('error: ' + err)
+          console.log("this Sub Admin login");
+        }
+        );
+    } else {
+      this.pagesService.getSubAdminByName(this.loginForm.value.username).subscribe((res: any) => {
+        console.log(res);
+        localStorage.setItem("LoggedUser",JSON.stringify(res));
         this.spinner.hide();
-        this.router.navigate(['/dashboard/dashboard1']);
+        if (res === null) {
+          console.log("Admin not found");
+          this.isLoginFailed = true;
+        } else {
+          this.router.navigate(['/dashboard/dashboard1']);
+        }
       })
-      .catch((err) => {
-        this.isLoginFailed = true;
-        this.spinner.hide();
-        // console.log('error: ' + err)
-        console.log("this Sub Admin login");
-        
-      }
-      );
+    }
   }
-
 }

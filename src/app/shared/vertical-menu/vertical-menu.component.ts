@@ -31,6 +31,7 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   perfectScrollbarEnable = true;
   collapseSidebar = false;
   resizeTimeout;
+  _user:any
 
   constructor(
     private router: Router,
@@ -47,7 +48,29 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngOnInit() {
-    this.menuItems = ROUTES;
+    
+     this._user =  localStorage.getItem("LoggedUser");
+    this._user = JSON.parse(this._user);
+    console.log(this._user.edit);
+    
+    if(this._user && this._user.role === "admin"){
+      this.menuItems = ROUTES.map(route => {
+        if (!route.submenu) return route;
+        return {
+          ...route,
+          submenu: route.submenu.filter(submenu => submenu.title !== "Sub-Admin")
+        }
+      });
+    }else{
+      this.menuItems = ROUTES;
+    }
+    // if(_user){
+    //   let filtered = this.menuItems.filter((user:any)=>{
+    //     if(){}
+    //   })
+    // }
+    
+    
   }
 
   ngAfterViewInit() {
@@ -90,7 +113,17 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
     else if (this.config.layout.menuPosition === "Side") { // Vertical Menu{
-      this.menuItems = ROUTES;
+      if(this._user && this._user.role === "admin"){
+        this.menuItems = ROUTES.map(route => {
+          if (!route.submenu) return route;
+          return {
+            ...route,
+            submenu: route.submenu.filter(submenu => submenu.title !== "Sub-Admin")
+          }
+        });
+      }else{
+        this.menuItems = ROUTES;
+      }
     }
 
 

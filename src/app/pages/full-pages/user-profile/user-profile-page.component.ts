@@ -26,8 +26,11 @@ export class UserProfilePageComponent implements OnInit {
   showReported = false;
   allReports: any = [];
   userReports: any = [];
+  user: any = []
   blockedUsers: any;
   showBlocked = false;
+  editAccess: Boolean = true;
+
   constructor(
     private userProfilePage: UserProfilePageService,
     private packageService: PackageService,
@@ -38,6 +41,17 @@ export class UserProfilePageComponent implements OnInit {
     this.getAllReports();
     this.get();
     this.getPackage();
+    let user;
+    user = localStorage.getItem("LoggedUser")
+    user = JSON.parse(user);
+    if(user && !user.edit){
+      console.log("hello");
+      
+      this.editAccess = false;
+    }else{
+      console.log(this.editAccess);
+      
+    }
   }
   get() {
     this.userProfilePage.get().then((res: []) => {
@@ -81,7 +95,7 @@ export class UserProfilePageComponent implements OnInit {
       console.log(filtered);
       this.data = filtered;
       this.showBlocked = true;
-    } else if(this.currentFilter === "DeleteRequested"){
+    } else if (this.currentFilter === "DeleteRequested") {
       const filtered = this.data.filter((_user) => !_user.requestToDelete);
       this.data = filtered;
     }
@@ -134,13 +148,8 @@ export class UserProfilePageComponent implements OnInit {
   };
   viewReport(_userId: any) {
     console.log("View report", this.allReports, _userId);
-    const _userReports = this.allReports.filter((report: any)=> report.complainedId === _userId);
+    const _userReports = this.allReports.filter((report: any) => report.complainedId === _userId);
     console.log(_userReports);
-    // const reportsWithUser = _userReports.map((element : any) => {
-    //   const userDetail = this.getUser("63ca7222b9f8c66c6681daa3");
-    //   console.log(userDetail);  
-    // });
-    // console.log(reportsWithUser);
     this.userReports = _userReports;
     let reportList = '';
     for (let i = 0; i < _userReports.length; i++) {
@@ -159,7 +168,7 @@ export class UserProfilePageComponent implements OnInit {
     const _blockedBy = this.mainData.filter((_user: any) => _user.Block.includes(_userId));
     console.log(_blockedBy);
     let usersList = '';
-    for(let i = 0; i < _blockedBy.length; i++){
+    for (let i = 0; i < _blockedBy.length; i++) {
       usersList += `<li class='border text-left my-1'><span class='font-weight-bold'> Name:</span> ${_blockedBy[i].name.charAt(0).toUpperCase() + _blockedBy[i].name.slice(1)}</li>`
     }
     Swal.fire({
@@ -169,5 +178,79 @@ export class UserProfilePageComponent implements OnInit {
       confirmButtonText: 'OK',
       confirmButtonColor: "#2f8be6"
     })
+  }
+  viewUserInformation(_userId: any) {
+    console.log("View Details", this.mainData, _userId);
+    const _user = this.mainData.filter((user: any) => user._id === _userId);
+    console.log(_user);
+    this.user = _user;
+    let userDetails = '';
+    for (let i = 0; i < _user.length; i++) {
+      userDetails +=
+        `
+        <div class="row">
+            <div class="col-lg-6">
+            <div class=' text-left my-1'>
+            <span class='font-weight-bold'> Name:</span> ${_user[i].name} <br> 
+            <span class='font-weight-bold'> Email: </span> ${_user[i].email} <br>
+            <span class='font-weight-bold'> Phone: </span> ${_user[i].personalContact} <br>
+            <span class='font-weight-bold'> Age: </span> ${_user[i].age} <br>
+            <span class='font-weight-bold'> Gender: </span> ${_user[i].gender} <br>
+            </div>
+            <div class=' text-left my-1'>
+            <span class='font-weight-bold'> Country: </span> ${_user[i].country} <br>
+            <span class='font-weight-bold'> Height: </span> ${_user[i].height} <br>
+            <span class='font-weight-bold'> Province: </span> ${_user[i].province} <br>
+            <span class='font-weight-bold'> House: </span> ${_user[i].house} <br>
+            <span class='font-weight-bold'> City: </span> ${_user[i].city} <br>
+            <span class='font-weight-bold'> Religious: </span> ${_user[i].religious} <br>
+            </div>
+            <div class=' text-left my-1'>
+            <span class='font-weight-bold'> Build:</span> ${_user[i].build} <br> 
+            <span class='font-weight-bold'> FamilyInfo: </span> ${_user[i].familyInfo} <br>
+            <span class='font-weight-bold'> Hobbies: </span> ${_user[i].hobbies} <br>
+            <span class='font-weight-bold'> Looks: </span> ${_user[i].looks} <br>
+            <span class='font-weight-bold'> Cast: </span> ${_user[i].cast} <br>
+            <span class='font-weight-bold'> JobStatus: </span> ${_user[i].jobStatus} <br>
+            </div>
+            </div>
+            <div class="col-lg-6">
+            <div class=' text-left my-1'>
+      <span class='font-weight-bold'> MontherTonque:</span> ${_user[i].montherTonque} <br> 
+      <span class='font-weight-bold'> MotherOccuption: </span> ${_user[i].motherOccuption} <br>
+      <span class='font-weight-bold'> Nationality: </span> ${_user[i].nationality} <br>
+      <span class='font-weight-bold'> ParentContact: </span> ${_user[i].parentContact} <br>
+      <span class='font-weight-bold'> FatherOccuption: </span> ${_user[i].fatherOccuption} <br>
+      <span class='font-weight-bold'> SocialLinkInsta: </span> ${_user[i].socialLinkInsta} <br>
+      <span class='font-weight-bold'> SocialLinkFb: </span> ${_user[i].socialLinkFb} <br>
+      </div>
+      <div class=' text-left my-1'>
+      <span class='font-weight-bold'> Sect:</span> ${_user[i].sect} <br> 
+      <span class='font-weight-bold'> SiblingsCountBrothers: </span> ${_user[i].siblingsCountBrothers} <br>
+      <span class='font-weight-bold'> SiblingsCountSisters: </span> ${_user[i].siblingsCountSisters} <br>
+      <span class='font-weight-bold'> ReligiousStatus: </span> ${_user[i].religiousStatus} <br>
+      <span class='font-weight-bold'> SocialLinkTwitter: </span> ${_user[i].socialLinkTwitter} <br>
+      </div>
+      <div class=' text-left my-1'>
+      <span class='font-weight-bold'> ProfessionalInfo:</span> ${_user[i].professionalInfo} <br> 
+      <span class='font-weight-bold'> Professional: </span> ${_user[i].professional} <br>
+      <span class='font-weight-bold'> Qualification: </span> ${_user[i].qualification} <br>
+      <span class='font-weight-bold'> SocialEconomic: </span> ${_user[i].socialEconomic} <br>
+      </div>
+            </div
+        <div>
+       
+      
+      `;
+    }
+    Swal.fire({
+      title: 'Details',
+      width: 800,
+      icon: 'info',
+      html: `<ul> ${userDetails} </ul>`,
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#2f8be6",
+      
+    });
   }
 } 

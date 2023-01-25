@@ -21,6 +21,9 @@ export class PagesService {
   getSubAdminById(id: any) {
     return this.http.get(`${environment.apiBaseUrl}/subAdmin/subAdminById/${id}`).toPromise();
   }
+  getSubAdminByName(userName:any) {
+    return this.http.get(`${environment.apiBaseUrl}/subAdmin/subAdminByName/${userName}`);
+  }
   updateSubAdmin(id:any,body:any){
     return this.http.put(`${environment.apiBaseUrl}/subAdmin/updatesubAdmin/${id}`,body).toPromise();
   }

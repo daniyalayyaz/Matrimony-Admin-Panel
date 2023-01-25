@@ -130,10 +130,9 @@ export class SubAdminListComponent implements OnInit {
     // }
     console.log(value);
     
-    // console.log(this.activeUpdate)
-    // this.userProfilePage.update(value._id, this.activeUpdate).then((res: any) => {
-    //   this.data = res
-    // });
+    this.pagesService.updateSubAdmin(value._id, value).then((res: any) => {
+      // this.data = res
+    });
   }
   // getPackage() {
   //   this.packageService.getPackage().then((res: any) => {

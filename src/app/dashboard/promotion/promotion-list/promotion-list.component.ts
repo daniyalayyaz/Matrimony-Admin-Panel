@@ -11,12 +11,24 @@ export class PromotionListComponent implements OnInit {
 
   data: any = [];
   list:any
+  editAccess: Boolean = true;
   
   constructor( private packageService:PackageService,private router: Router) { }
 
   ngOnInit(): void {
 
     this.get();
+    let user;
+    user = localStorage.getItem("LoggedUser")
+    user = JSON.parse(user);
+    if(user && !user.edit){
+      console.log("hello");
+      
+      this.editAccess = false;
+    }else{
+      console.log(this.editAccess);
+      
+    }
   }
   get() {
     this.packageService.getPromotion().then((res: any) => {

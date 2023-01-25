@@ -1,6 +1,7 @@
 <table class="table table-striped ">
     <thead>
-        <a class="btn btn-danger btn-sm mr-1 mb-1" (click)="urlrouting()"><i class="fa fa-plus mr-1"></i>New</a>
+        <button class="btn btn-danger btn-sm mr-1 mb-1" (click)="urlrouting()"
+        [disabled] = "!editAccess"><i class="fa fa-plus mr-1"></i>New</button>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Promotion</th>
@@ -28,10 +29,10 @@
             {{list.promotionShow}}
         </td>
             <td>
-                <button (click)="edit(list)" class="btn-sm btn btn-primary text-center" title="Edit text-bold-400 rounded"><i
-                    class="fa fa-edit"></i></button>
-                <button (click)="delete(list)" class="btn-sm btn btn-danger text-center" title="Delete"><i
-                        class="fa fa-trash"></i></button>
+                <button (click)="edit(list)" class="btn-sm btn btn-primary text-center" title="Edit text-bold-400 rounded"
+                [disabled] = "!editAccess"><i class="fa fa-edit" ></i></button>
+                <button (click)="delete(list)" class="btn-sm btn btn-danger text-center" title="Delete"
+                [disabled] = "!editAccess"><i  class="fa fa-trash"></i></button>
                         
             </td>
         </tr>
