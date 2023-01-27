@@ -159,8 +159,6 @@
       }
     }
   },
-  "defaultProject": "apex-admin",
-
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
@@ -172,5 +170,6 @@
   },
   "cli": {
     "analytics": "9e472cbb-4d61-46ce-9a7c-5eae6a406034"
-  }
+  },
+  "defaultProject": "apex-admin"
 }

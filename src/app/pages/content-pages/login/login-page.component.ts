@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from 'app/shared/auth/auth.service';
 import { PagesService } from 'app/shared/services/pages.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class LoginPageComponent {
 
   constructor(private router: Router, private authService: AuthService,
     private spinner: NgxSpinnerService,
-    private pagesService: PagesService,) {
+    private pagesService: PagesService,
+    private toasterservice: ToastrService,) {
   }
 
   get lf() {
@@ -58,17 +60,25 @@ export class LoginPageComponent {
           this.spinner.hide();
           // console.log('error: ' + err)
           console.log("this Sub Admin login");
+
         }
         );
     } else {
-      this.pagesService.getSubAdminByName(this.loginForm.value.username).subscribe((res: any) => {
+      this.pagesService.getSubAdminByName(this.loginForm.value.username,
+        this.loginForm.value.password).subscribe((res: any) => {
         console.log(res);
         localStorage.setItem("LoggedUser",JSON.stringify(res));
         this.spinner.hide();
         if (res === null) {
           console.log("Admin not found");
+          this.toasterservice.error("Invalid User!");
+          this.spinner.hide();
           this.isLoginFailed = true;
-        } else {
+        }else if(res === false){
+          this.toasterservice.error("Invalid Password!");
+          this.spinner.hide();
+          this.isLoginFailed = true;
+        }else{
           this.router.navigate(['/dashboard/dashboard1']);
         }
       })
