@@ -40,4 +40,9 @@ export class PackageService {
     return this.http.delete(`${environment.apiBaseUrl}/admin/deletePromotion/${id}`).toPromise();
   };
 
+  notificationAdd(reciverId:any,data:any,view:any,description:any){
+    const url = `${environment.apiBaseUrl}/nothicationAdd/${reciverId}`;
+    return this.http.post(url,{data,view,description});
+  }
+  
 }

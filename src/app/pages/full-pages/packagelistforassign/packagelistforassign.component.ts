@@ -29,7 +29,14 @@ export class PackagelistforassignComponent implements OnInit {
     });
   };
  
+  notificationAdd(){
+    let view = true;
+    let description =  "Congratulations your package has been activated now you can send interests and messages";
+    let emptyObject = '';
+    this.packageService.notificationAdd(this.id,emptyObject,view,description).subscribe((res:any)=>{
 
+    })
+  }
   // edit(id: any) {
   //   this.router.navigate(['/setting/build-edit', id._id]);
   // }
@@ -37,10 +44,12 @@ export class PackagelistforassignComponent implements OnInit {
     this.router.navigate(['/dashboard/packageForm']);
   }
   assign(data:any){
+    this.notificationAdd();
     console.log(data);
     this.userProfilePage.updatePackge(this.id,data).then((res: any) => {
       console.log(res);
       this.data = res
+      
     });
   }
 

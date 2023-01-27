@@ -58,6 +58,4 @@ export class PackageListComponent implements OnInit {
   urlrouting(){
     this.router.navigate(['/dashboard/packageForm']);
   }
-
-
 }
