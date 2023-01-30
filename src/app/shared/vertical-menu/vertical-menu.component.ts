@@ -31,7 +31,7 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   perfectScrollbarEnable = true;
   collapseSidebar = false;
   resizeTimeout;
-  _user:any
+  _user: any
 
   constructor(
     private router: Router,
@@ -48,12 +48,12 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngOnInit() {
-    
-     this._user =  localStorage.getItem("LoggedUser");
+
+    this._user = localStorage.getItem("LoggedUser");
     this._user = JSON.parse(this._user);
-    console.log(this._user.edit);
-    
-    if(this._user && this._user.role === "admin"){
+    console.log(this._user);
+
+    if (this._user && this._user.role === "admin") {
       this.menuItems = ROUTES.map(route => {
         if (!route.submenu) return route;
         return {
@@ -61,16 +61,24 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
           submenu: route.submenu.filter(submenu => submenu.title !== "Sub-Admin")
         }
       });
-    }else{
+    }
+    else {
       this.menuItems = ROUTES;
+    }
+    if (this._user && this._user.edit === false) {
+      console.log("helo");
+
+      this.menuItems = this.menuItems.filter((route: any) => route.title !== "Settings")
+      console.log(this.menuItems);
+
     }
     // if(_user){
     //   let filtered = this.menuItems.filter((user:any)=>{
     //     if(){}
     //   })
     // }
-    
-    
+
+
   }
 
   ngAfterViewInit() {
@@ -96,13 +104,13 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize(event) {
-      if (this.resizeTimeout) {
-          clearTimeout(this.resizeTimeout);
-      }
-      this.resizeTimeout = setTimeout((() => {
-        this.innerWidth = event.target.innerWidth;
-          this.loadLayout();
-      }).bind(this), 500);
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+    }
+    this.resizeTimeout = setTimeout((() => {
+      this.innerWidth = event.target.innerWidth;
+      this.loadLayout();
+    }).bind(this), 500);
   }
 
   loadLayout() {
@@ -113,7 +121,7 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
     else if (this.config.layout.menuPosition === "Side") { // Vertical Menu{
-      if(this._user && this._user.role === "admin"){
+      if (this._user && this._user.role === "admin") {
         this.menuItems = ROUTES.map(route => {
           if (!route.submenu) return route;
           return {
@@ -121,12 +129,18 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
             submenu: route.submenu.filter(submenu => submenu.title !== "Sub-Admin")
           }
         });
-      }else{
+      } else {
         this.menuItems = ROUTES;
       }
     }
 
+    if (this._user && this._user.edit === false) {
+      console.log("helo");
 
+      this.menuItems = this.menuItems.filter((route: any) => route.title !== "Settings")
+      console.log(this.menuItems);
+
+    }
 
 
     if (this.config.layout.sidebar.backgroundColor === 'white') {
@@ -136,7 +150,7 @@ export class VerticalMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.logoUrl = 'assets/img/logo.png';
     }
 
-    if(this.config.layout.sidebar.collapsed) {
+    if (this.config.layout.sidebar.collapsed) {
       this.collapseSidebar = true;
     }
     else {

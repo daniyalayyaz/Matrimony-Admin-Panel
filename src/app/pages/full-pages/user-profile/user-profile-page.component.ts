@@ -239,8 +239,6 @@ export class UserProfilePageComponent implements OnInit {
       </div>
             </div
         <div>
-       
-      
       `;
     }
     Swal.fire({
