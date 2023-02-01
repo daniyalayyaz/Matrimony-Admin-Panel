@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BuildService } from '../services/Build.service';
+import { BuildService } from '../services/build.service';
 
 @Component({
   selector: 'app-build-list',

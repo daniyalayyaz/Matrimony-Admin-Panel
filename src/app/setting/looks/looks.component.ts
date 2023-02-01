@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LooksService } from '../services/Looks.service';
+import { LooksService } from '../services/looks.service';
 
 @Component({
   selector: 'app-looks',
