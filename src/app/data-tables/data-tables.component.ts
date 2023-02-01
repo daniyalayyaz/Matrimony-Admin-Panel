@@ -134,7 +134,7 @@ export class DataTablesComponent implements OnInit {
    */
   serverSideSetPage(event) {
     this.http
-      .get('http://localhost:5000/api/admin/getallusers')
+      .get('https://mvp.herokuapp.com/api/admin/getallusers')
       .pipe(map((data) => data as Array<any>))
       .subscribe((data) => {
         this.serverSideRowData = data;
@@ -160,16 +160,16 @@ export class DataTablesComponent implements OnInit {
     this.table.offset = 0;
   }
   getAllUsers(){
-    this.http.get("http://localhost:5000/api/admin/getallusers").subscribe((result)=>{
+    this.http.get("https://mvp.herokuapp.com/api/admin/getallusers").subscribe((result)=>{
   
       this.users=result
     });
-      // let user = this.http.get("http://localhost:5000/api/admin/getallusers");
+      // let user = this.http.get("https://mvp.herokuapp.com/api/admin/getallusers");
       // return this.http.get("https://baltiapi.herokuapp.com/users");
     }
 
     deleteUser(id:any){
-      this.http.get(`http://localhost:5000/api/admin/deleteuser/${id}`).subscribe((result)=>{
+      this.http.get(`https://mvp.herokuapp.com/api/admin/deleteuser/${id}`).subscribe((result)=>{
   
         console.log(result)
       });

@@ -11,19 +11,19 @@ export class LooksService {
   
   constructor(private http: HttpClient) { }
   addLooks(data: any) {
-    return this.http.post(environment.apiBaseUrl + '/looks', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com' + '/looks', data).toPromise()
   };
   getLooks() {
-    return this.http.get(environment.apiBaseUrl + '/looks').toPromise()
+    return this.http.get('https://mvp.herokuapp.com' + '/looks').toPromise()
   };
   getLooksById(id: any) {
-    return this.http.get(`${environment.apiBaseUrl}/looks/${id}`).toPromise();
+    return this.http.get(`${'https://mvp.herokuapp.com'}/looks/${id}`).toPromise();
   };
   updateLooks(id: any,data:any) {
-    return this.http.put(`${environment.apiBaseUrl}/looks/${id}`,data).toPromise();
+    return this.http.put(`${'https://mvp.herokuapp.com'}/looks/${id}`,data).toPromise();
   };
   deleteLooks(id: any) {
-    return this.http.delete(`${environment.apiBaseUrl}/looks/${id}`).toPromise();
+    return this.http.delete(`${'https://mvp.herokuapp.com'}/looks/${id}`).toPromise();
   };
 
 }

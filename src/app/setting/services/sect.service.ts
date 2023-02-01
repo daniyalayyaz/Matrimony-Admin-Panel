@@ -11,19 +11,19 @@ export class SectService {
   
   constructor(private http: HttpClient) { }
   addSect(data: any) {
-    return this.http.post(environment.apiBaseUrl + '/sect', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com' + '/sect', data).toPromise()
   };
   getSect() {
-    return this.http.get(environment.apiBaseUrl + '/sect').toPromise()
+    return this.http.get('https://mvp.herokuapp.com' + '/sect').toPromise()
   };
   getSectById(id: any) {
-    return this.http.get(`${environment.apiBaseUrl}/sect/${id}`).toPromise();
+    return this.http.get(`${'https://mvp.herokuapp.com'}/sect/${id}`).toPromise();
   };
   updateSect(id: any,data:any) {
-    return this.http.put(`${environment.apiBaseUrl}/sect/${id}`,data).toPromise();
+    return this.http.put(`${'https://mvp.herokuapp.com'}/sect/${id}`,data).toPromise();
   };
   deleteSect(id: any) {
-    return this.http.delete(`${environment.apiBaseUrl}/sect/${id}`).toPromise();
+    return this.http.delete(`${'https://mvp.herokuapp.com'}/sect/${id}`).toPromise();
   };
 
 }

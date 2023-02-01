@@ -11,19 +11,19 @@ export class MotherLanguageService {
   
   constructor(private http: HttpClient) { }
   addMotherLanguage(data: any) {
-    return this.http.post(environment.apiBaseUrl + '/motherLanguage', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com' + '/motherLanguage', data).toPromise()
   };
   getMotherLanguage() {
-    return this.http.get(environment.apiBaseUrl + '/motherLanguage').toPromise()
+    return this.http.get('https://mvp.herokuapp.com' + '/motherLanguage').toPromise()
   };
   getMotherLanguageById(id: any) {
-    return this.http.get(`${environment.apiBaseUrl}/motherLanguage/${id}`).toPromise();
+    return this.http.get(`${'https://mvp.herokuapp.com'}/motherLanguage/${id}`).toPromise();
   };
   updateMotherLanguage(id: any,data:any) {
-    return this.http.put(`${environment.apiBaseUrl}/motherLanguage/${id}`,data).toPromise();
+    return this.http.put(`${'https://mvp.herokuapp.com'}/motherLanguage/${id}`,data).toPromise();
   };
   deleteMotherLanguage(id: any) {
-    return this.http.delete(`${environment.apiBaseUrl}/motherLanguage/${id}`).toPromise();
+    return this.http.delete(`${'https://mvp.herokuapp.com'}/motherLanguage/${id}`).toPromise();
   };
 
 }

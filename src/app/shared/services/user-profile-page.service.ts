@@ -10,27 +10,27 @@ export class UserProfilePageService {
 
   constructor(private http: HttpClient) { }
   add(data: any) {
-    return this.http.post(environment.apiBaseUrl + '/user/createProfile', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com' + '/user/createProfile', data).toPromise()
   };
   get() {
-    return this.http.get(environment.apiBaseUrl + '/user/getAllProfile').toPromise()
+    return this.http.get('https://mvp.herokuapp.com' + '/user/getAllProfile').toPromise()
   };
   update(id: any,data:any) {
-    return this.http.put(`${environment.apiBaseUrl}/user/updateProfile/${id}`,{active:data}).toPromise();
+    return this.http.put(`${'https://mvp.herokuapp.com'}/user/updateProfile/${id}`,{active:data}).toPromise();
   };
   updatePackge(id: any,data:any) {
-    return this.http.put(`${environment.apiBaseUrl}/user/assignPackageToUser/${id}`,{packageId:data}).toPromise();
+    return this.http.put(`${'https://mvp.herokuapp.com'}/user/assignPackageToUser/${id}`,{packageId:data}).toPromise();
   };
   block(id:any){
-    return this.http.get(`${environment.apiBaseUrl}/admin/blockuser/${id}`).toPromise();
+    return this.http.get(`${'https://mvp.herokuapp.com'}/admin/blockuser/${id}`).toPromise();
   };
   delete(id:any){
-    return this.http.get(`${environment.apiBaseUrl}/admin/deleteuser/${id}`).toPromise();
+    return this.http.get(`${'https://mvp.herokuapp.com'}/admin/deleteuser/${id}`).toPromise();
   }
   getPackageById(id:any) {
-    return this.http.get(`${environment.apiBaseUrl}/user/imageUpload/${id}`)
+    return this.http.get(`${'https://mvp.herokuapp.com'}/user/imageUpload/${id}`)
   }
   getReports(){
-    return this.http.get(environment.apiBaseUrl + '/admin/getAllReports').toPromise();
+    return this.http.get('https://mvp.herokuapp.com' + '/admin/getAllReports').toPromise();
   }
 }

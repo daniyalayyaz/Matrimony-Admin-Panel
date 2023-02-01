@@ -11,19 +11,19 @@ export class ComplexionService {
   
   constructor(private http: HttpClient) { }
   addComplexion(data: any) {
-    return this.http.post(environment.apiBaseUrl + '/complexion', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com' + '/complexion', data).toPromise()
   };
   getComplexion() {
-    return this.http.get(environment.apiBaseUrl + '/complexion').toPromise()
+    return this.http.get('https://mvp.herokuapp.com' + '/complexion').toPromise()
   };
   getComplexionById(id: any) {
-    return this.http.get(`${environment.apiBaseUrl}/complexion/${id}`).toPromise();
+    return this.http.get(`${'https://mvp.herokuapp.com'}/complexion/${id}`).toPromise();
   };
   updateComplexion(id: any,data:any) {
-    return this.http.put(`${environment.apiBaseUrl}/complexion/${id}`,data).toPromise();
+    return this.http.put(`${'https://mvp.herokuapp.com'}/complexion/${id}`,data).toPromise();
   };
   deleteComplexion(id: any) {
-    return this.http.delete(`${environment.apiBaseUrl}/complexion/${id}`).toPromise();
+    return this.http.delete(`${'https://mvp.herokuapp.com'}/complexion/${id}`).toPromise();
   };
 
 }
