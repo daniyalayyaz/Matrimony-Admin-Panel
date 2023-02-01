@@ -11,19 +11,19 @@ export class BuildService {
   
   constructor(private http: HttpClient) { }
   addBuild(data: any) {
-    return this.http.post('https://mvp.herokuapp.com' + '/build', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com/api' + '/build', data).toPromise()
   };
   getBuild() {
-    return this.http.get('https://mvp.herokuapp.com' + '/build').toPromise()
+    return this.http.get('https://mvp.herokuapp.com/api' + '/build').toPromise()
   };
   getBuildById(id: any) {
-    return this.http.get(`${'https://mvp.herokuapp.com'}/build/${id}`).toPromise();
+    return this.http.get(`https://mvp.herokuapp.com/api/build/${id}`).toPromise();
   };
   updateBuild(id: any,data:any) {
-    return this.http.put(`${'https://mvp.herokuapp.com'}/build/${id}`,data).toPromise();
+    return this.http.put(`https://mvp.herokuapp.com/api/build/${id}`,data).toPromise();
   };
   deleteBuild(id: any) {
-    return this.http.delete(`${'https://mvp.herokuapp.com'}/build/${id}`).toPromise();
+    return this.http.delete(`https://mvp.herokuapp.com/api/build/${id}`).toPromise();
   };
 
 }

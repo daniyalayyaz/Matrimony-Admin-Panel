@@ -12,7 +12,9 @@ export class PackageListComponent implements OnInit {
   data: any = [];
   list:any
   editAccess: Boolean = true;
-  constructor(private packageService: PackageService,  private router: Router) { }
+  constructor(private packageService: PackageService,  private router: Router) { 
+    
+  }
 
   ngOnInit(): void {
 

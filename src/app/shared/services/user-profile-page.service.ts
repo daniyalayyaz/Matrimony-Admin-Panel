@@ -10,27 +10,27 @@ export class UserProfilePageService {
 
   constructor(private http: HttpClient) { }
   add(data: any) {
-    return this.http.post('https://mvp.herokuapp.com' + '/user/createProfile', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com/api' + '/user/createProfile', data).toPromise()
   };
   get() {
-    return this.http.get('https://mvp.herokuapp.com' + '/user/getAllProfile').toPromise()
+    return this.http.get('https://mvp.herokuapp.com/api' + '/user/getAllProfile').toPromise()
   };
   update(id: any,data:any) {
-    return this.http.put(`${'https://mvp.herokuapp.com'}/user/updateProfile/${id}`,{active:data}).toPromise();
+    return this.http.put(`https://mvp.herokuapp.com/api/user/updateProfile/${id}`,{active:data}).toPromise();
   };
   updatePackge(id: any,data:any) {
-    return this.http.put(`${'https://mvp.herokuapp.com'}/user/assignPackageToUser/${id}`,{packageId:data}).toPromise();
+    return this.http.put(`https://mvp.herokuapp.com/api/user/assignPackageToUser/${id}`,{packageId:data}).toPromise();
   };
   block(id:any){
-    return this.http.get(`${'https://mvp.herokuapp.com'}/admin/blockuser/${id}`).toPromise();
+    return this.http.get(`https://mvp.herokuapp.com/api/admin/blockuser/${id}`).toPromise();
   };
   delete(id:any){
-    return this.http.get(`${'https://mvp.herokuapp.com'}/admin/deleteuser/${id}`).toPromise();
+    return this.http.get(`https://mvp.herokuapp.com/api/admin/deleteuser/${id}`).toPromise();
   }
   getPackageById(id:any) {
-    return this.http.get(`${'https://mvp.herokuapp.com'}/user/imageUpload/${id}`)
+    return this.http.get(`https://mvp.herokuapp.com/api/user/imageUpload/${id}`)
   }
   getReports(){
-    return this.http.get('https://mvp.herokuapp.com' + '/admin/getAllReports').toPromise();
+    return this.http.get('https://mvp.herokuapp.com/api' + '/admin/getAllReports').toPromise();
   }
 }

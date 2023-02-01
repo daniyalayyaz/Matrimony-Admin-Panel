@@ -11,19 +11,19 @@ export class HouseService {
   
   constructor(private http: HttpClient) { }
   addHouse(data: any) {
-    return this.http.post('https://mvp.herokuapp.com' + '/house', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com/api' + '/house', data).toPromise()
   };
   getHouse() {
-    return this.http.get('https://mvp.herokuapp.com' + '/house').toPromise()
+    return this.http.get('https://mvp.herokuapp.com/api' + '/house').toPromise()
   };
   getHouseById(id: any) {
-    return this.http.get(`${'https://mvp.herokuapp.com'}/house/${id}`).toPromise();
+    return this.http.get(`https://mvp.herokuapp.com/api/house/${id}`).toPromise();
   };
   updateHouse(id: any,data:any) {
-    return this.http.put(`${'https://mvp.herokuapp.com'}/house/${id}`,data).toPromise();
+    return this.http.put(`https://mvp.herokuapp.com/api/house/${id}`,data).toPromise();
   };
   deleteHouse(id: any) {
-    return this.http.delete(`${'https://mvp.herokuapp.com'}/house/${id}`).toPromise();
+    return this.http.delete(`https://mvp.herokuapp.com/api/house/${id}`).toPromise();
   };
 
 }

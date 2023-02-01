@@ -11,19 +11,19 @@ export class CountryService {
   
   constructor(private http: HttpClient) { }
   addCountry(data: any) {
-    return this.http.post('https://mvp.herokuapp.com' + '/country', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com/api' + '/country', data).toPromise()
   };
   getCountry() {
-    return this.http.get('https://mvp.herokuapp.com' + '/country').toPromise()
+    return this.http.get('https://mvp.herokuapp.com/api' + '/country').toPromise()
   };
   getCountryById(id: any) {
-    return this.http.get(`${'https://mvp.herokuapp.com'}/country/${id}`).toPromise();
+    return this.http.get(`https://mvp.herokuapp.com/api/country/${id}`).toPromise();
   };
   updateCountry(id: any,data:any) {
-    return this.http.put(`${'https://mvp.herokuapp.com'}/country/${id}`,data).toPromise();
+    return this.http.put(`https://mvp.herokuapp.com/api/country/${id}`,data).toPromise();
   };
   deleteCountry(id: any) {
-    return this.http.delete(`${'https://mvp.herokuapp.com'}/country/${id}`).toPromise();
+    return this.http.delete(`https://mvp.herokuapp.com/api/country/${id}`).toPromise();
   };
 
 }

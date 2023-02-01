@@ -11,19 +11,19 @@ export class ProvinvcesService {
   
   constructor(private http: HttpClient) { }
   addProvinvces(data: any) {
-    return this.http.post('https://mvp.herokuapp.com' + '/provinvces', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com/api' + '/provinvces', data).toPromise()
   };
   getProvinvces() {
-    return this.http.get('https://mvp.herokuapp.com' + '/provinvces').toPromise()
+    return this.http.get('https://mvp.herokuapp.com/api' + '/provinvces').toPromise()
   };
   getProvinvcesById(id: any) {
-    return this.http.get(`${'https://mvp.herokuapp.com'}/provinvces/${id}`).toPromise();
+    return this.http.get(`https://mvp.herokuapp.com/api/provinvces/${id}`).toPromise();
   };
   updateProvinvces(id: any,data:any) {
-    return this.http.put(`${'https://mvp.herokuapp.com'}/provinvces/${id}`,data).toPromise();
+    return this.http.put(`https://mvp.herokuapp.com/api/provinvces/${id}`,data).toPromise();
   };
   deleteProvinvces(id: any) {
-    return this.http.delete(`${'https://mvp.herokuapp.com'}/provinvces/${id}`).toPromise();
+    return this.http.delete(`https://mvp.herokuapp.com/api/provinvces/${id}`).toPromise();
   };
 
 }

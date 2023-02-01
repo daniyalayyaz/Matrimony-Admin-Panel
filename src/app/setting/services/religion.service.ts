@@ -11,19 +11,19 @@ export class ReligionService {
   
   constructor(private http: HttpClient) { }
   addReligion(data: any) {
-    return this.http.post('https://mvp.herokuapp.com' + '/religion', data).toPromise()
+    return this.http.post('https://mvp.herokuapp.com/api' + '/religion', data).toPromise()
   };
   getReligion() {
-    return this.http.get('https://mvp.herokuapp.com' + '/religion').toPromise()
+    return this.http.get('https://mvp.herokuapp.com/api' + '/religion').toPromise()
   };
   getReligionById(id: any) {
-    return this.http.get(`${'https://mvp.herokuapp.com'}/religion/${id}`).toPromise();
+    return this.http.get(`https://mvp.herokuapp.com/api/religion/${id}`).toPromise();
   };
   updateReligion(id: any,data:any) {
-    return this.http.put(`${'https://mvp.herokuapp.com'}/religion/${id}`,data).toPromise();
+    return this.http.put(`https://mvp.herokuapp.com/api/religion/${id}`,data).toPromise();
   };
   deleteReligion(id: any) {
-    return this.http.delete(`${'https://mvp.herokuapp.com'}/religion/${id}`).toPromise();
+    return this.http.delete(`https://mvp.herokuapp.com/api/religion/${id}`).toPromise();
   };
 
 }
